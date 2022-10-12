@@ -13,7 +13,7 @@ namespace Sistema_Bloqueio
 
         private void Inicializar()
         {
-            dt = Usuario.GetUsuarios(true);
+            dt = Usuario.GetUsuarios();
             dgvUsuarios.DataSource = dt;
             ConfigurarGradeUsuarios();
         }
@@ -58,6 +58,37 @@ namespace Sistema_Bloqueio
             using(var frm = new FrmUsuariosCadastro(id))
             {
                 frm.ShowDialog();
+                dgvUsuarios.DataSource = Usuario.GetUsuarios();
+                ConfigurarGradeUsuarios();
+            }
+        }
+
+        private void btnCadastrar_Click(object sender, EventArgs e)
+        {
+            using (var frm = new FrmUsuariosCadastro(0))
+            {
+                frm.ShowDialog();
+                dgvUsuarios.DataSource = Usuario.GetUsuarios();
+                ConfigurarGradeUsuarios();
+            }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            dt = Usuario.GetUsuarios(txtProcurar.Text);
+            dgvUsuarios.DataSource = dt;
+            ConfigurarGradeUsuarios();
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            var id = Convert.ToInt32(dgvUsuarios.Rows[dgvUsuarios.CurrentCell.RowIndex].Cells["Id"].Value);
+
+            using (var frm = new FrmUsuariosCadastro(id, true))
+            {
+                frm.ShowDialog();
+                dgvUsuarios.DataSource = Usuario.GetUsuarios();
+                ConfigurarGradeUsuarios();
             }
         }
     }

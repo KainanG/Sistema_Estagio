@@ -53,7 +53,16 @@ namespace Sistema_Bloqueio
 
         public void SalvarUsuario()
         {
-            var sql = "UPDATE usuarios SET nome=@nome, email=@email, usuario=@usuario, senha=@senha, adm=@adm WHERE id=" + this.Id;
+            var sql = "";
+
+            if (this.Id == 0)
+            {
+                sql = "INSERT INTO usuarios (nome, email, usuario, senha, adm) VALUES (@nome, @email, @usuario, @senha, @adm)";
+            }
+            else
+            {
+                sql = "UPDATE usuarios SET nome=@nome, email=@email, usuario=@usuario, senha=@senha, adm=@adm WHERE id=" + this.Id;
+            }
 
             try
             {
@@ -76,12 +85,36 @@ namespace Sistema_Bloqueio
             {
                 MessageBox.Show(ex.Message);          
             }
-
         }
-        public static DataTable GetUsuarios(bool ativos)
+
+        public void Excluir()
+        {
+            var sql = "DELETE FROM usuarios WHERE id=" + this.Id;
+            try
+            {
+                using (var cn = new MySqlConnection(Conn.strConn))
+                {
+                    cn.Open();
+                    using (var cmd = new MySqlCommand(sql, cn))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+
+        public static DataTable GetUsuarios(string procurar = "")
         {
             var dt = new DataTable();
             var sql = "SELECT id, nome, email, usuario, adm, senha FROM db_estagioSis.usuarios";
+
+            if (procurar != "")
+                sql += " WHERE usuario LIKE '%" + procurar + "%' OR nome LIKE '%" + procurar + "%'";
 
             try
             {
