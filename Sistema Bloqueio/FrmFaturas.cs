@@ -47,12 +47,12 @@ namespace Sistema_Bloqueio
             dgv_faturas.Columns["mes"].DefaultCellStyle.Padding = new Padding(5, 0, 0, 0);
 
 
-            dgv_faturas.Columns["vencimento"].HeaderText = "Vencimento";
+            dgv_faturas.Columns["vencimento"].HeaderText = "VENCIMENTO";
             dgv_faturas.Columns["vencimento"].Width = 100;
             dgv_faturas.Columns["vencimento"].DefaultCellStyle.Padding = new Padding(5, 0, 0, 0);
 
             dgv_faturas.Columns["repete"].HeaderText = "PARCELAS";
-            dgv_faturas.Columns["repete"].Width = 50;
+            dgv_faturas.Columns["repete"].Width = 100;
             dgv_faturas.Columns["repete"].DefaultCellStyle.Padding = new Padding(5, 0, 0, 0);
 
             dgv_faturas.Columns["faturapaga"].HeaderText = "PAGO";

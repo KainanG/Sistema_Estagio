@@ -37,7 +37,9 @@ namespace Sistema_Bloqueio
             dgv_Clientes.RowHeadersWidth = 25;
 
             dgv_Clientes.Columns["id"].HeaderText = "ID";
-            dgv_Clientes.Columns["id"].Visible = false;
+            dgv_Clientes.Columns["id"].Width = 90;
+            dgv_Clientes.Columns["id"].DefaultCellStyle.Padding = new Padding(5, 0, 0, 0);
+            //dgv_Clientes.Columns["id"].Visible = false;
 
             dgv_Clientes.Columns["status"].HeaderText = "ATIVO";
             dgv_Clientes.Columns["status"].Width = 90;
