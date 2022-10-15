@@ -31,16 +31,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblId = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtMes = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtVencimento = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtRepete = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.txtValor = new System.Windows.Forms.TextBox();
+            this.dgv_Clientes = new System.Windows.Forms.DataGridView();
+            this.btnSalvar = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Clientes)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -73,12 +73,12 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Mês";
             // 
-            // textBox1
+            // txtMes
             // 
-            this.textBox1.Location = new System.Drawing.Point(57, 76);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 23);
-            this.textBox1.TabIndex = 4;
+            this.txtMes.Location = new System.Drawing.Point(57, 76);
+            this.txtMes.Name = "txtMes";
+            this.txtMes.Size = new System.Drawing.Size(100, 23);
+            this.txtMes.TabIndex = 4;
             // 
             // label3
             // 
@@ -90,12 +90,12 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Vencimento";
             // 
-            // textBox2
+            // txtVencimento
             // 
-            this.textBox2.Location = new System.Drawing.Point(281, 76);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 23);
-            this.textBox2.TabIndex = 6;
+            this.txtVencimento.Location = new System.Drawing.Point(281, 76);
+            this.txtVencimento.Name = "txtVencimento";
+            this.txtVencimento.Size = new System.Drawing.Size(100, 23);
+            this.txtVencimento.TabIndex = 6;
             // 
             // label4
             // 
@@ -108,12 +108,12 @@
             this.label4.Text = "Repete";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
-            // textBox3
+            // txtRepete
             // 
-            this.textBox3.Location = new System.Drawing.Point(503, 76);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(81, 23);
-            this.textBox3.TabIndex = 8;
+            this.txtRepete.Location = new System.Drawing.Point(503, 76);
+            this.txtRepete.Name = "txtRepete";
+            this.txtRepete.Size = new System.Drawing.Size(81, 23);
+            this.txtRepete.TabIndex = 8;
             // 
             // label5
             // 
@@ -125,51 +125,53 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Valor";
             // 
-            // textBox4
+            // txtValor
             // 
-            this.textBox4.Location = new System.Drawing.Point(698, 76);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(104, 23);
-            this.textBox4.TabIndex = 10;
+            this.txtValor.Location = new System.Drawing.Point(698, 76);
+            this.txtValor.Name = "txtValor";
+            this.txtValor.Size = new System.Drawing.Size(104, 23);
+            this.txtValor.TabIndex = 10;
             // 
-            // dataGridView1
+            // dgv_Clientes
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 121);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(790, 447);
-            this.dataGridView1.TabIndex = 11;
+            this.dgv_Clientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_Clientes.Location = new System.Drawing.Point(12, 121);
+            this.dgv_Clientes.Name = "dgv_Clientes";
+            this.dgv_Clientes.RowTemplate.Height = 25;
+            this.dgv_Clientes.Size = new System.Drawing.Size(790, 447);
+            this.dgv_Clientes.TabIndex = 11;
+            this.dgv_Clientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Clientes_CellContentClick);
             // 
-            // button1
+            // btnSalvar
             // 
-            this.button1.Location = new System.Drawing.Point(727, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Salvar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnSalvar.Location = new System.Drawing.Point(727, 12);
+            this.btnSalvar.Name = "btnSalvar";
+            this.btnSalvar.Size = new System.Drawing.Size(75, 23);
+            this.btnSalvar.TabIndex = 12;
+            this.btnSalvar.Text = "Salvar";
+            this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // FrmFaturasCadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(814, 580);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.btnSalvar);
+            this.Controls.Add(this.dgv_Clientes);
+            this.Controls.Add(this.txtValor);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtRepete);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtVencimento);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtMes);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblId);
             this.Controls.Add(this.label1);
             this.Name = "FrmFaturasCadastro";
             this.Text = "FrmFaturasCadastro";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Clientes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -180,14 +182,14 @@
         private Label label1;
         private Label lblId;
         private Label label2;
-        private TextBox textBox1;
+        private TextBox txtMes;
         private Label label3;
-        private TextBox textBox2;
+        private TextBox txtVencimento;
         private Label label4;
-        private TextBox textBox3;
+        private TextBox txtRepete;
         private Label label5;
-        private TextBox textBox4;
-        private DataGridView dataGridView1;
-        private Button button1;
+        private TextBox txtValor;
+        private DataGridView dgv_Clientes;
+        private Button btnSalvar;
     }
 }

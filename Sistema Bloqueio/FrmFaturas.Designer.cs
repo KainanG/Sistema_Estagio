@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgv_faturas = new System.Windows.Forms.DataGridView();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_faturas)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgv_faturas
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 49);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(925, 468);
-            this.dataGridView1.TabIndex = 0;
+            this.dgv_faturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_faturas.Location = new System.Drawing.Point(12, 49);
+            this.dgv_faturas.Name = "dgv_faturas";
+            this.dgv_faturas.RowTemplate.Height = 25;
+            this.dgv_faturas.Size = new System.Drawing.Size(925, 468);
+            this.dgv_faturas.TabIndex = 0;
             // 
             // textBox1
             // 
@@ -90,10 +90,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgv_faturas);
             this.Name = "FrmFaturas";
             this.Text = "FrmFaturas";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_faturas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -101,7 +101,7 @@
 
         #endregion
 
-        private DataGridView dataGridView1;
+        private DataGridView dgv_faturas;
         private TextBox textBox1;
         private Button button1;
         private Label label1;

@@ -15,7 +15,8 @@ namespace Sistema_Bloqueio
         public string Nome { get; set; }
         public string Cnpj { get; set; }
         public char Status { get; set; }
-        public string Fatura { get; set; }
+        public int Fatura { get; set; }
+        
         public List<Endereco> Enderecos { get; set; }
         public List<Responsavel> Responsaveis { get; set; }
 
