@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.dgv_faturas = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
@@ -45,12 +45,12 @@
             this.dgv_faturas.Size = new System.Drawing.Size(925, 468);
             this.dgv_faturas.TabIndex = 0;
             // 
-            // textBox1
+            // txtBuscar
             // 
-            this.textBox1.Location = new System.Drawing.Point(250, 22);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(270, 23);
-            this.textBox1.TabIndex = 1;
+            this.txtBuscar.Location = new System.Drawing.Point(250, 22);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(270, 23);
+            this.txtBuscar.TabIndex = 1;
             // 
             // button1
             // 
@@ -60,6 +60,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Buscar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
@@ -89,7 +90,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.dgv_faturas);
             this.Name = "FrmFaturas";
             this.Text = "FrmFaturas";
@@ -102,7 +103,7 @@
         #endregion
 
         private DataGridView dgv_faturas;
-        private TextBox textBox1;
+        private TextBox txtBuscar;
         private Button button1;
         private Label label1;
         private Button button2;

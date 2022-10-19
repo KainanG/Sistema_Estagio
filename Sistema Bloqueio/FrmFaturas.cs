@@ -23,10 +23,10 @@ namespace Sistema_Bloqueio
         {
             dt = Fatura.GetFaturas();
             dgv_faturas.DataSource = dt;
-            ConfigurarGradeFatuas();
+            ConfigurarGradeFaturas();
         }
 
-        private void ConfigurarGradeFatuas()
+        private void ConfigurarGradeFaturas()
         {
 
             dgv_faturas.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 9, FontStyle.Bold);
@@ -74,8 +74,24 @@ namespace Sistema_Bloqueio
 
         private void button2_Click(object sender, EventArgs e)
         {
-            FrmFaturasCadastro frmFaturasCadastro = new FrmFaturasCadastro();
-            frmFaturasCadastro.ShowDialog();
+            
+
+            using (var frm = new FrmFaturasCadastro(0))
+            {
+                frm.ShowDialog();
+                dgv_faturas.DataSource = Fatura.GetFaturas();
+                ConfigurarGradeFaturas();
+            }
+
+
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            dt = Fatura.GetFaturas(txtBuscar.Text);
+            dgv_faturas.DataSource = dt;
+            ConfigurarGradeFaturas();
         }
     }
 

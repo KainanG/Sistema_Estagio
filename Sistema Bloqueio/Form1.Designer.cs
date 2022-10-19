@@ -35,6 +35,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtProcurar = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
+            this.btnRelatorio = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -111,11 +112,23 @@
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
+            // btnRelatorio
+            // 
+            this.btnRelatorio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRelatorio.Location = new System.Drawing.Point(298, 12);
+            this.btnRelatorio.Name = "btnRelatorio";
+            this.btnRelatorio.Size = new System.Drawing.Size(75, 23);
+            this.btnRelatorio.TabIndex = 7;
+            this.btnRelatorio.Text = "Relatório";
+            this.btnRelatorio.UseVisualStyleBackColor = true;
+            this.btnRelatorio.Click += new System.EventHandler(this.btnRelatorio_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(834, 633);
+            this.Controls.Add(this.btnRelatorio);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.txtProcurar);
             this.Controls.Add(this.label1);
@@ -140,5 +153,6 @@
         private Label label1;
         private TextBox txtProcurar;
         private Button btnBuscar;
+        private Button btnRelatorio;
     }
 }

@@ -16,7 +16,7 @@ namespace Sistema_Bloqueio
         DataTable dt = new DataTable();
         Fatura fatura = new Fatura();
 
-        public FrmFaturasCadastro()
+        public FrmFaturasCadastro(int id)
         {
             InitializeComponent();
             Inicializar();
