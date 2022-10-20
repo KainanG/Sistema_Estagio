@@ -20,6 +20,16 @@ namespace Sistema_Bloqueio
         {
             InitializeComponent();
             Inicializar();
+            if (this.id > 0)
+            {
+                fatura.GetFatura(this.id);
+                lblId.Text = this.id.ToString();
+                txtMes.Text = fatura.Mes;
+                txtRepete.Text = fatura.Repete;
+                txtValor.Text = fatura.Valor;
+                txtVencimento.Text = fatura.Vencimento;
+                
+            }
         }
 
         private void Inicializar()

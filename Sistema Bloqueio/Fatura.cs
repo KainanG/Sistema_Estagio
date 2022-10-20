@@ -52,6 +52,26 @@ namespace Sistema_Bloqueio
             }
         }
 
+        public void Excluir()
+        {
+            var sql = "DELETE FROM faturas WHERE id=" + this.Id;
+            try
+            {
+                using (var cn = new MySqlConnection(Conn.strConn))
+                {
+                    cn.Open();
+                    using (var cmd = new MySqlCommand(sql, cn))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
 
         public void SalvarFatura()
         {
@@ -64,7 +84,7 @@ namespace Sistema_Bloqueio
             }
             else
             {
-                sql = "UPDATE faturas SET nome=@nome, email=@email, usuario=@usuario, senha=@senha, adm=@adm WHERE id=" + this.Id;
+                sql = "UPDATE fatuas SET nome=@valor, mes=@mes, vencimento=@vencimento, repete=@repete WHERE id=" + this.Id;
             }
 
             try

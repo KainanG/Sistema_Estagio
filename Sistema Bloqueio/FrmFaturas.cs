@@ -93,6 +93,16 @@ namespace Sistema_Bloqueio
             dgv_faturas.DataSource = dt;
             ConfigurarGradeFaturas();
         }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            var id = Convert.ToInt32(dgv_faturas.Rows[dgv_faturas.CurrentCell.RowIndex].Cells["Id"].Value);
+            Fatura faturas = new Fatura();
+            faturas.Id = id;
+            faturas.Excluir();
+            dgv_faturas.DataSource = Fatura.GetFaturas();
+            ConfigurarGradeFaturas();
+        }
     }
 
 }
