@@ -121,6 +121,24 @@ namespace Sistema_Bloqueio
             faturas.PagarFatura();
             dgv_faturas.DataSource = Fatura.GetFaturas();
             ConfigurarGradeFaturas();
+            foreach (DataGridViewRow dr in dgv_faturas.Rows)
+            {
+
+                string text = (string)dr.Cells[5].Value;
+
+                if (text == "Não")
+                {
+                    dr.DefaultCellStyle.BackColor = Color.FromArgb(255, 250, 128, 114);
+
+                }
+                else
+                {
+                    dr.DefaultCellStyle.BackColor = Color.FromArgb(255, 143, 188, 143);
+
+                }
+
+            }
+
         }
 
         private void btnDestacar_Click(object sender, EventArgs e)
@@ -152,6 +170,24 @@ namespace Sistema_Bloqueio
             faturas.PagarFatura(true);
             dgv_faturas.DataSource = Fatura.GetFaturas();
             ConfigurarGradeFaturas();
+
+            foreach (DataGridViewRow dr in dgv_faturas.Rows)
+            {
+
+                string text = (string)dr.Cells[5].Value;
+
+                if (text == "Não")
+                {
+                    dr.DefaultCellStyle.BackColor = Color.FromArgb(255, 250, 128, 114);
+
+                }
+                else
+                {
+                    dr.DefaultCellStyle.BackColor = Color.FromArgb(255, 143, 188, 143);
+
+                }
+
+            }
         }
     }
 
