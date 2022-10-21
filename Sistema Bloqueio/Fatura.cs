@@ -115,10 +115,11 @@ namespace Sistema_Bloqueio
         public static DataTable GetFaturas(string procurar = "")
         {
             var dt = new DataTable();
-            var sql = "SELECT id, valor, mes, vencimento, repete, faturapaga, cliente_idcliente FROM db_estagioSis.faturas";
+            var sql = "USE `db_estagioSis`; SELECT fatura.id, fatura.valor, fatura.mes, fatura.vencimento, fatura.repete, fatura.faturapaga," +
+                " cliente.nome FROM faturas as fatura LEFT JOIN clientes as cliente ON fatura.cliente_idcliente = cliente.id";
 
             if (procurar != "")
-                sql += " WHERE vencimento LIKE '%" + procurar + "%' OR valor LIKE '%" + procurar + "%'";
+                sql += $" WHERE fatura.vencimento LIKE '%{procurar}%' OR fatura.valor LIKE '%{procurar}%' OR fatura.faturapaga LIKE '%{procurar}%' OR cliente.nome LIKE '%{procurar}%' OR fatura.mes LIKE '%{procurar}%'";
 
             try
             {
@@ -136,6 +137,31 @@ namespace Sistema_Bloqueio
                 MessageBox.Show(ex.Message);
             }
             return dt;
+        }
+
+        public void PagarFatura(bool pendente = false)
+        {
+            
+            
+                var sql = "UPDATE faturas SET faturapaga=@faturapaga WHERE id=" + this.Id;
+            
+            try
+            {
+                using (var cn = new MySqlConnection(Conn.strConn))
+                {
+                    cn.Open();
+                    using (var cmd = new MySqlCommand(sql, cn))
+                    {
+
+                        cmd.Parameters.AddWithValue("@faturapaga", pendente==false?"Sim":"Não");                       
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 

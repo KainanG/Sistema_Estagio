@@ -69,6 +69,8 @@ namespace Sistema_Bloqueio
             dgv_Clientes.Columns["fatura"].DefaultCellStyle.Padding = new Padding(5, 0, 0, 0);
 
             dgv_Clientes.Sort(dgv_Clientes.Columns["nome"], System.ComponentModel.ListSortDirection.Ascending);
+
+
         }
 
         private void label4_Click(object sender, EventArgs e)

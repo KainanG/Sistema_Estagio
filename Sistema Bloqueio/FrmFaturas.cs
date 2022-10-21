@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Google.Protobuf;
+using Microsoft.EntityFrameworkCore.Query.Internal;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,20 +17,24 @@ namespace Sistema_Bloqueio
         DataTable dt = new DataTable();
         public FrmFaturas()
         {
+            
             InitializeComponent();
-            Inicializar();
+            Inicializar();         
         }
 
        private void Inicializar()
         {
+            
             dt = Fatura.GetFaturas();
             dgv_faturas.DataSource = dt;
             ConfigurarGradeFaturas();
+            
         }
 
         private void ConfigurarGradeFaturas()
         {
-
+            
+            dgv_faturas.Refresh();
             dgv_faturas.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 9, FontStyle.Bold);
             dgv_faturas.DefaultCellStyle.Font = new Font("Arial", 9);
             dgv_faturas.RowHeadersWidth = 25;
@@ -59,13 +65,16 @@ namespace Sistema_Bloqueio
             dgv_faturas.Columns["faturapaga"].Width = 100;
             dgv_faturas.Columns["faturapaga"].DefaultCellStyle.Padding = new Padding(5, 0, 0, 0);
 
-            dgv_faturas.Columns["cliente_idcliente"].HeaderText = "CLIENTE";
-            dgv_faturas.Columns["cliente_idcliente"].Width = 100;
-            dgv_faturas.Columns["cliente_idcliente"].DefaultCellStyle.Padding = new Padding(5, 0, 0, 0);
+            dgv_faturas.Columns["nome"].HeaderText = "CLIENTE";
+            dgv_faturas.Columns["nome"].Width = 100;
+            dgv_faturas.Columns["nome"].DefaultCellStyle.Padding = new Padding(5, 0, 0, 0);
 
 
+            
 
-            dgv_faturas.Sort(dgv_faturas.Columns["id"], System.ComponentModel.ListSortDirection.Ascending);
+            
+            //dgv_faturas.Sort(dgv_faturas.Columns["id"], System.ComponentModel.ListSortDirection.Ascending);
+            
         }
 
 
@@ -100,6 +109,47 @@ namespace Sistema_Bloqueio
             Fatura faturas = new Fatura();
             faturas.Id = id;
             faturas.Excluir();
+            dgv_faturas.DataSource = Fatura.GetFaturas();
+            ConfigurarGradeFaturas();
+        }
+
+        private void btnPago_Click(object sender, EventArgs e)
+        {
+            var id = Convert.ToInt32(dgv_faturas.Rows[dgv_faturas.CurrentCell.RowIndex].Cells["Id"].Value);
+            Fatura faturas = new Fatura();
+            faturas.Id = id;
+            faturas.PagarFatura();
+            dgv_faturas.DataSource = Fatura.GetFaturas();
+            ConfigurarGradeFaturas();
+        }
+
+        private void btnDestacar_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow dr in dgv_faturas.Rows)
+            {
+
+                string text = (string)dr.Cells[5].Value;
+
+                if (text == "Não")
+                {
+                    dr.DefaultCellStyle.BackColor = Color.FromArgb(255, 250, 128, 114);
+                 
+                }
+                else
+                {
+                    dr.DefaultCellStyle.BackColor = Color.FromArgb(255, 143, 188, 143);
+                    
+                }
+
+            }
+        }
+
+        private void btnPendente_Click(object sender, EventArgs e)
+        {
+            var id = Convert.ToInt32(dgv_faturas.Rows[dgv_faturas.CurrentCell.RowIndex].Cells["Id"].Value);
+            Fatura faturas = new Fatura();
+            faturas.Id = id;
+            faturas.PagarFatura(true);
             dgv_faturas.DataSource = Fatura.GetFaturas();
             ConfigurarGradeFaturas();
         }

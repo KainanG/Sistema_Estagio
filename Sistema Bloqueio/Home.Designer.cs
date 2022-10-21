@@ -31,7 +31,6 @@
             this.btnUsuarios = new System.Windows.Forms.Button();
             this.btnClientes = new System.Windows.Forms.Button();
             this.btnFaturas = new System.Windows.Forms.Button();
-            this.btnRelatorio = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
             this.btnResp = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -69,20 +68,10 @@
             this.btnFaturas.UseVisualStyleBackColor = true;
             this.btnFaturas.Click += new System.EventHandler(this.btnFaturas_Click);
             // 
-            // btnRelatorio
-            // 
-            this.btnRelatorio.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnRelatorio.Location = new System.Drawing.Point(520, 12);
-            this.btnRelatorio.Name = "btnRelatorio";
-            this.btnRelatorio.Size = new System.Drawing.Size(121, 49);
-            this.btnRelatorio.TabIndex = 6;
-            this.btnRelatorio.Text = "Relatórios";
-            this.btnRelatorio.UseVisualStyleBackColor = true;
-            // 
             // btnSair
             // 
             this.btnSair.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnSair.Location = new System.Drawing.Point(647, 12);
+            this.btnSair.Location = new System.Drawing.Point(648, 12);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(121, 49);
             this.btnSair.TabIndex = 7;
@@ -108,7 +97,6 @@
             this.ClientSize = new System.Drawing.Size(781, 435);
             this.Controls.Add(this.btnResp);
             this.Controls.Add(this.btnSair);
-            this.Controls.Add(this.btnRelatorio);
             this.Controls.Add(this.btnFaturas);
             this.Controls.Add(this.btnClientes);
             this.Controls.Add(this.btnUsuarios);
@@ -123,7 +111,6 @@
         private Button btnUsuarios;
         private Button btnClientes;
         private Button btnFaturas;
-        private Button btnRelatorio;
         private Button btnSair;
         private Button btnResp;
     }

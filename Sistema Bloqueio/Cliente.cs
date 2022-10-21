@@ -103,6 +103,8 @@ namespace Sistema_Bloqueio
 
         public static DataTable GetClientes(string procurar = "")
         {
+            
+
             var dt = new DataTable();
             var sql = "SELECT id, nome, cnpj, status, fatura FROM db_estagioSis.clientes";
 
@@ -126,7 +128,9 @@ namespace Sistema_Bloqueio
             }
             return dt;
         }
-    }
+
+
+      }
 
 
 
