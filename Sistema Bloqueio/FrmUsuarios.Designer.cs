@@ -1,6 +1,6 @@
 ﻿namespace Sistema_Bloqueio
 {
-    partial class Form1
+    partial class FrmUsuarios
     {
         /// <summary>
         ///  Required designer variable.

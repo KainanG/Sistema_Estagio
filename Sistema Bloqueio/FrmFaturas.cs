@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -28,7 +29,13 @@ namespace Sistema_Bloqueio
             dt = Fatura.GetFaturas();
             dgv_faturas.DataSource = dt;
             ConfigurarGradeFaturas();
+            Contar();
             
+        }
+
+        private void Contar()
+        {    
+           
         }
 
         private void ConfigurarGradeFaturas()
@@ -73,8 +80,7 @@ namespace Sistema_Bloqueio
             
 
             
-            //dgv_faturas.Sort(dgv_faturas.Columns["id"], System.ComponentModel.ListSortDirection.Ascending);
-            
+            //dgv_faturas.Sort(dgv_faturas.Columns["id"], System.ComponentModel.ListSortDirection.Ascending);           
         }
 
 

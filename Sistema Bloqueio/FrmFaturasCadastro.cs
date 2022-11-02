@@ -62,11 +62,7 @@ namespace Sistema_Bloqueio
 
             dgv_Clientes.Columns["cnpj"].HeaderText = "CNPJ";
             dgv_Clientes.Columns["cnpj"].Width = 200;
-            dgv_Clientes.Columns["cnpj"].DefaultCellStyle.Padding = new Padding(5, 0, 0, 0);
-
-            dgv_Clientes.Columns["fatura"].HeaderText = "FATURA";
-            dgv_Clientes.Columns["fatura"].Width = 300;
-            dgv_Clientes.Columns["fatura"].DefaultCellStyle.Padding = new Padding(5, 0, 0, 0);
+            dgv_Clientes.Columns["cnpj"].DefaultCellStyle.Padding = new Padding(5, 0, 0, 0);          
 
             dgv_Clientes.Sort(dgv_Clientes.Columns["nome"], System.ComponentModel.ListSortDirection.Ascending);
 

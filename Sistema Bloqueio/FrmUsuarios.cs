@@ -8,10 +8,10 @@ using MySql.Data.MySqlClient;
 
 namespace Sistema_Bloqueio
 {
-    public partial class Form1 : Form
+    public partial class FrmUsuarios : Form
     {
         DataTable dt = new DataTable();
-        public Form1()
+        public FrmUsuarios()
         {
             InitializeComponent();
             Inicializar();

@@ -12,11 +12,32 @@ namespace Sistema_Bloqueio
 {
     public partial class FrmClientesCadastro : Form
     {
+        public string nomeUsu { get; set; }
+
         int id;
         Cliente cliente = new Cliente();
         Endereco enderecoCliente = new Endereco();
         public FrmClientesCadastro(int id)
         {
+            InitializeComponent();
+            this.id = id;
+
+            if (this.id > 0)
+            {
+                cliente.GetCliente(this.id);
+                lblId.Text = this.id.ToString();
+                txtNomeCliente.Text = cliente.Nome;
+                txtCnpjCliente.Text = cliente.Cnpj;
+                if (cliente.Status == 'S')
+                    chkAtivoCliente.Checked = true;
+
+            }
+        }
+
+        public FrmClientesCadastro(int id, string nomeUsuario)
+        {
+            nomeUsu = nomeUsuario;
+
             InitializeComponent();
             this.id = id;
 
@@ -73,7 +94,7 @@ namespace Sistema_Bloqueio
                 cliente.Enderecos = new List<Endereco>();
                 cliente.Enderecos.Add(endereco);
 
-                cliente.SalvarCliente();
+                cliente.SalvarCliente(nomeUsu);
                
                 this.Close();
             }

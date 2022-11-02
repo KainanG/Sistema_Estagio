@@ -10,17 +10,11 @@ using System.Windows.Forms;
 
 namespace Sistema_Bloqueio
 {
-    public partial class Home : Form
+    public partial class HomeUsu : Form
     {
-        public Home()
+        public HomeUsu()
         {
             InitializeComponent();
-        }
-
-        private void btnUsuarios_Click(object sender, EventArgs e)
-        {
-            Form1 form1 = new Form1();
-            form1.ShowDialog();
         }
 
         private void btnClientes_Click(object sender, EventArgs e)
@@ -38,12 +32,6 @@ namespace Sistema_Bloqueio
         private void btnSair_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void btnResp_Click(object sender, EventArgs e)
-        {
-            FrmResponsavelCadastro frmRespCad = new FrmResponsavelCadastro();
-            frmRespCad.ShowDialog();
         }
     }
 }

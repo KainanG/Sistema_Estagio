@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Google.Protobuf;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -15,8 +16,8 @@ namespace Sistema_Bloqueio
         public string Nome { get; set; }
         public string Cnpj { get; set; }
         public char Status { get; set; }
-        public int Fatura { get; set; }
-        
+        public string usuario { get; set; } 
+
         public List<Endereco> Enderecos { get; set; }
         public List<Responsavel> Responsaveis { get; set; }
 
@@ -53,7 +54,7 @@ namespace Sistema_Bloqueio
         }
 
 
-        public void SalvarCliente()
+        public void SalvarCliente(string nomeUsuario)
         {
             var sql = "";
 
@@ -61,7 +62,8 @@ namespace Sistema_Bloqueio
             {
                 sql = "INSERT INTO clientes (nome, cnpj, status) VALUES (@nome, @cnpj, @status);" +
                     "INSERT INTO enderecos (cep, estado, cidade, bairro, rua, numero, complemento, cliente_idcliente)" +
-                    "VALUES (@cep, @estado, @cidade, @bairro, @rua, @numero, @complemento, LAST_INSERT_ID());";
+                    "VALUES (@cep, @estado, @cidade, @bairro, @rua, @numero, @complemento, LAST_INSERT_ID());" +
+                    "INSERT INTO logs (usuario, data, form) VALUES (@usuario, @data, @form)";
             }
             else
             {
@@ -85,8 +87,12 @@ namespace Sistema_Bloqueio
                         cmd.Parameters.AddWithValue("@rua", this.Enderecos.FirstOrDefault().Rua);
                         cmd.Parameters.AddWithValue("@numero", this.Enderecos.FirstOrDefault().Numero);
                         cmd.Parameters.AddWithValue("@complemento", this.Enderecos.FirstOrDefault().Complemento);
+                        cmd.Parameters.AddWithValue("@usuario", nomeUsuario);
+                        cmd.Parameters.AddWithValue("@data", DateTime.Today.ToString("dd/MM/yyyy"));
+                        cmd.Parameters.AddWithValue("@form", "Clientes");
 
-                        
+
+
 
 
                         cmd.ExecuteNonQuery();
@@ -106,7 +112,7 @@ namespace Sistema_Bloqueio
             
 
             var dt = new DataTable();
-            var sql = "SELECT id, nome, cnpj, status, fatura FROM db_estagioSis.clientes";
+            var sql = "SELECT id, nome, cnpj, status FROM db_estagioSis.clientes";
 
             if (procurar != "")
                 sql += " WHERE nome LIKE '%" + procurar + "%' OR cnpj LIKE '%" + procurar + "%'";

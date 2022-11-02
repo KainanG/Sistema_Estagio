@@ -1,4 +1,6 @@
-﻿using DocumentFormat.OpenXml.Office2010.Excel;
+﻿using DocumentFormat.OpenXml.Bibliography;
+using DocumentFormat.OpenXml.Office.CustomUI;
+using DocumentFormat.OpenXml.Office2010.Excel;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -16,17 +18,19 @@ namespace Sistema_Bloqueio
     {
         public MySqlConnection Conexao;
         public string data_source = "datasource=localhost;username=root;password=!Kg!s2601#;database=db_estagioSis";
+        public string vldusuario { get; set; }
 
         public FrmLogin()
         {
             InitializeComponent();
+            
         }
 
-        private void bntEntrar_Click(object sender, EventArgs e)
+        public void bntEntrar_Click(object sender, EventArgs e)
         {
             try
             {
-                string vldusuario = "'" + txtUsuario.Text + "'";
+                vldusuario = "'" + txtUsuario.Text + "'";
                 string vldsenha = "'" + txtSenha.Text + "'";
                 string sql = "SELECT COUNT(*) FROM usuarios WHERE usuario = " + vldusuario + " and senha = " + vldsenha;
                 Conexao = new MySqlConnection(data_source);
@@ -45,9 +49,29 @@ namespace Sistema_Bloqueio
                 {
                     if (Convert.ToInt32(list.ItemArray[0]) > 0)
                     {
-                        var menu = new Home();
+                        var menu = new HomeUsu();
                         menu.Show();
                         this.Hide();
+
+                        string sql2 = "SELECT COUNT(*) FROM usuarios WHERE usuario = " + vldusuario + " and senha = " + vldsenha + " and adm = 'S'";
+                        Conexao = new MySqlConnection(data_source);
+                        Conexao.Open();                     
+                        MySqlCommand comando2 = new MySqlCommand(sql2, Conexao);
+                        DataTable dataTable2 = new DataTable();
+                        MySqlDataAdapter Da2 = new MySqlDataAdapter(comando2);
+                        Da2.Fill(dataTable2);
+
+                        foreach (DataRow list2 in dataTable2.Rows)
+                        {
+                            if (Convert.ToInt32(list2.ItemArray[0]) > 0)
+                            {
+                                menu.Visible = false;
+                                var menuAdm = new HomeAdm(vldusuario);
+                                menuAdm.Show();                              
+                            }
+                        }
+
+
                     }
                     else
                     {

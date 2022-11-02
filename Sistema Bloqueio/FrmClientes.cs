@@ -12,9 +12,18 @@ namespace Sistema_Bloqueio
 {
     public partial class FrmClientes : Form
     {
+        public string nomeUsu { get; set; }
+
         DataTable dt = new DataTable();
         public FrmClientes()
         {
+            InitializeComponent();
+            Inicializar();
+        }
+
+        public FrmClientes(string nomeUsuario)
+        {
+            nomeUsu = nomeUsuario;
             InitializeComponent();
             Inicializar();
         }
@@ -49,9 +58,9 @@ namespace Sistema_Bloqueio
             dgvClientes.Columns["cnpj"].Width = 200;
             dgvClientes.Columns["cnpj"].DefaultCellStyle.Padding = new Padding(5, 0, 0, 0);
 
-            dgvClientes.Columns["fatura"].HeaderText = "FATURA";
+            /*dgvClientes.Columns["fatura"].HeaderText = "FATURA";
             dgvClientes.Columns["fatura"].Width = 300;
-            dgvClientes.Columns["fatura"].DefaultCellStyle.Padding = new Padding(5, 0, 0, 0);
+            dgvClientes.Columns["fatura"].DefaultCellStyle.Padding = new Padding(5, 0, 0, 0);*/
 
             dgvClientes.Sort(dgvClientes.Columns["nome"], System.ComponentModel.ListSortDirection.Ascending);
         }
@@ -70,7 +79,7 @@ namespace Sistema_Bloqueio
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            using (var frm = new FrmClientesCadastro(0))
+            using (var frm = new FrmClientesCadastro(0, nomeUsu))
             {
                 frm.ShowDialog();
                 dgvClientes.DataSource = Cliente.GetClientes();
