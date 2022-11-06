@@ -53,6 +53,26 @@ namespace Sistema_Bloqueio
             }
         }
 
+        public void Excluir()
+        {
+            var sql = "DELETE FROM enderecos WHERE cliente_idcliente=" + this.Id + ";" +
+                "DELETE FROM clientes WHERE id=" + this.Id;
+            try
+            {
+                using (var cn = new MySqlConnection(Conn.strConn))
+                {
+                    cn.Open();
+                    using (var cmd = new MySqlCommand(sql, cn))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
 
         public void SalvarCliente(string nomeUsuario)
         {
@@ -87,7 +107,7 @@ namespace Sistema_Bloqueio
                         cmd.Parameters.AddWithValue("@rua", this.Enderecos.FirstOrDefault().Rua);
                         cmd.Parameters.AddWithValue("@numero", this.Enderecos.FirstOrDefault().Numero);
                         cmd.Parameters.AddWithValue("@complemento", this.Enderecos.FirstOrDefault().Complemento);
-                        cmd.Parameters.AddWithValue("@usuario", nomeUsuario);
+                        cmd.Parameters.AddWithValue("@usuario", nomeUsuario.Replace('\'', ' ').Trim());
                         cmd.Parameters.AddWithValue("@data", DateTime.Today.ToString("dd/MM/yyyy"));
                         cmd.Parameters.AddWithValue("@form", "Clientes");
 

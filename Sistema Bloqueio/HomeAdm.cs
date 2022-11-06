@@ -22,14 +22,14 @@ namespace Sistema_Bloqueio
         public HomeAdm(string nomeUsuario)
         {
             InitializeComponent();
-            lblUsuario.Text = nomeUsuario;
+            lblUsuario.Text = nomeUsuario.Replace('\'', ' ');
             nomeUsu = nomeUsuario;
         }
 
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
-            FrmUsuarios form1 = new FrmUsuarios();
-            form1.ShowDialog();
+            FrmUsuarios frmUsuarios = new FrmUsuarios(nomeUsu);
+            frmUsuarios.ShowDialog();
         }
 
         private void btnClientes_Click(object sender, EventArgs e)
@@ -40,7 +40,7 @@ namespace Sistema_Bloqueio
 
         private void btnFaturas_Click(object sender, EventArgs e)
         {
-            FrmFaturas frmFaturas = new FrmFaturas();
+            FrmFaturas frmFaturas = new FrmFaturas(nomeUsu);
             frmFaturas.ShowDialog();
         }
 
@@ -51,7 +51,7 @@ namespace Sistema_Bloqueio
 
         public void btnResp_Click(object sender, EventArgs e)
         {
-            FrmResponsavelCadastro frmRespCad = new FrmResponsavelCadastro();
+            FrmResponsavelCadastro frmRespCad = new FrmResponsavelCadastro(nomeUsu);
             frmRespCad.ShowDialog();
         }
 

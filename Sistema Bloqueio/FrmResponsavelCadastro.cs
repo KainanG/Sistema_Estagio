@@ -12,7 +12,7 @@ namespace Sistema_Bloqueio
 {
     public partial class FrmResponsavelCadastro : Form
     {
-
+        public string nomeUsu { get; set; }
         int id;
         Responsavel responsavel = new Responsavel();
         Endereco enderecoCliente = new Endereco();
@@ -21,7 +21,12 @@ namespace Sistema_Bloqueio
         {
             InitializeComponent();
         }
-
+        
+        public FrmResponsavelCadastro(string nomeUsuario)
+        {
+            InitializeComponent();
+            nomeUsu = nomeUsuario;
+        }
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             responsavel.Nome = txtNomeResp.Text;
@@ -46,7 +51,7 @@ namespace Sistema_Bloqueio
             responsavel.Enderecos = new List<Endereco>();
             responsavel.Enderecos.Add(endereco);
 
-            responsavel.SalvarResponsavel();
+            responsavel.SalvarResponsavel(nomeUsu);
 
             this.Close();
         }

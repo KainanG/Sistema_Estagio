@@ -49,7 +49,7 @@ namespace Sistema_Bloqueio
                 {
                     if (Convert.ToInt32(list.ItemArray[0]) > 0)
                     {
-                        var menu = new HomeUsu();
+                        var menu = new HomeUsu(vldusuario);
                         menu.Show();
                         this.Hide();
 

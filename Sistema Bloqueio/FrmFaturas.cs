@@ -1,5 +1,6 @@
 ﻿using Google.Protobuf;
 using Microsoft.EntityFrameworkCore.Query.Internal;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,12 +16,120 @@ namespace Sistema_Bloqueio
 {
     public partial class FrmFaturas : Form
     {
+        public string nomeUsuario { get; set; }
         DataTable dt = new DataTable();
+
         public FrmFaturas()
         {
-            
+           
             InitializeComponent();
-            Inicializar();         
+            Inicializar();
+            var sql = "SELECT COUNT(id) AS qtd FROM faturas WHERE faturapaga = \"Não\"";
+            string pendentes = "";
+            string pagas = "";
+            try
+            {
+                using (var cn = new MySqlConnection(Conn.strConn))
+                {
+                    cn.Open();
+                    using (var cmd = new MySqlCommand(sql, cn))
+                    {
+                        using (var dr = cmd.ExecuteReader())
+                        {
+                            if (dr.Read())
+                            {
+                                pendentes = dr["qtd"].ToString();
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            var sql2 = "SELECT COUNT(id) AS qtd FROM faturas WHERE faturapaga = \"Sim\"";
+            try
+            {
+                using (var cn = new MySqlConnection(Conn.strConn))
+                {
+                    cn.Open();
+                    using (var cmd = new MySqlCommand(sql2, cn))
+                    {
+                        using (var dr = cmd.ExecuteReader())
+                        {
+                            if (dr.Read())
+                            {
+                                pagas = dr["qtd"].ToString();
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            lblPago.Text = pagas;
+            lblPendente.Text = pendentes;
+        }
+
+
+        public FrmFaturas(string nomeUsu)
+        {
+            this.nomeUsuario = nomeUsu;
+            InitializeComponent();
+            Inicializar();
+            var sql = "SELECT COUNT(id) AS qtd FROM faturas WHERE faturapaga = \"Não\"";
+            string pendentes = "";
+            string pagas = "";
+            try
+            {
+                using (var cn = new MySqlConnection(Conn.strConn))
+                {
+                    cn.Open();
+                    using (var cmd = new MySqlCommand(sql, cn))
+                    {
+                        using (var dr = cmd.ExecuteReader())
+                        {
+                            if (dr.Read())
+                            {
+                                pendentes = dr["qtd"].ToString();
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            var sql2 = "SELECT COUNT(id) AS qtd FROM faturas WHERE faturapaga = \"Sim\"";           
+            try
+            {
+                using (var cn = new MySqlConnection(Conn.strConn))
+                {
+                    cn.Open();
+                    using (var cmd = new MySqlCommand(sql2, cn))
+                    {
+                        using (var dr = cmd.ExecuteReader())
+                        {
+                            if (dr.Read())
+                            {
+                                pagas = dr["qtd"].ToString();
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            lblPago.Text = pagas;
+            lblPendente.Text = pendentes;
         }
 
        private void Inicializar()
@@ -91,7 +200,7 @@ namespace Sistema_Bloqueio
         {
             
 
-            using (var frm = new FrmFaturasCadastro(0))
+            using (var frm = new FrmFaturasCadastro(0,this.nomeUsuario))
             {
                 frm.ShowDialog();
                 dgv_faturas.DataSource = Fatura.GetFaturas();
@@ -145,6 +254,56 @@ namespace Sistema_Bloqueio
 
             }
 
+            var sql = "SELECT COUNT(id) AS qtd FROM faturas WHERE faturapaga = \"Não\"";
+            string pendentes = "";
+            string pagas = "";
+            try
+            {
+                using (var cn = new MySqlConnection(Conn.strConn))
+                {
+                    cn.Open();
+                    using (var cmd = new MySqlCommand(sql, cn))
+                    {
+                        using (var dr = cmd.ExecuteReader())
+                        {
+                            if (dr.Read())
+                            {
+                                pendentes = dr["qtd"].ToString();
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            var sql2 = "SELECT COUNT(id) AS qtd FROM faturas WHERE faturapaga = \"Sim\"";
+            try
+            {
+                using (var cn = new MySqlConnection(Conn.strConn))
+                {
+                    cn.Open();
+                    using (var cmd = new MySqlCommand(sql2, cn))
+                    {
+                        using (var dr = cmd.ExecuteReader())
+                        {
+                            if (dr.Read())
+                            {
+                                pagas = dr["qtd"].ToString();
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            lblPago.Text = pagas;
+            lblPendente.Text = pendentes;
+
         }
 
         private void btnDestacar_Click(object sender, EventArgs e)
@@ -194,6 +353,56 @@ namespace Sistema_Bloqueio
                 }
 
             }
+
+            var sql = "SELECT COUNT(id) AS qtd FROM faturas WHERE faturapaga = \"Não\"";
+            string pendentes = "";
+            string pagas = "";
+            try
+            {
+                using (var cn = new MySqlConnection(Conn.strConn))
+                {
+                    cn.Open();
+                    using (var cmd = new MySqlCommand(sql, cn))
+                    {
+                        using (var dr = cmd.ExecuteReader())
+                        {
+                            if (dr.Read())
+                            {
+                                pendentes = dr["qtd"].ToString();
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            var sql2 = "SELECT COUNT(id) AS qtd FROM faturas WHERE faturapaga = \"Sim\"";
+            try
+            {
+                using (var cn = new MySqlConnection(Conn.strConn))
+                {
+                    cn.Open();
+                    using (var cmd = new MySqlCommand(sql2, cn))
+                    {
+                        using (var dr = cmd.ExecuteReader())
+                        {
+                            if (dr.Read())
+                            {
+                                pagas = dr["qtd"].ToString();
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            lblPago.Text = pagas;
+            lblPendente.Text = pendentes;
         }
     }
 

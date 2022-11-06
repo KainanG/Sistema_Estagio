@@ -12,11 +12,13 @@ namespace Sistema_Bloqueio
 {
     public partial class FrmUsuariosCadastro : Form
     {
+        public string nomeUsuario { get; set; }
         int id;
         bool excluir = false;
         Usuario usuario = new Usuario();
-        public FrmUsuariosCadastro(int id, bool excluir = false)
+        public FrmUsuariosCadastro(int id, string nomeUsu, bool excluir = false)
         {
+            this.nomeUsuario = nomeUsu;
             InitializeComponent();
             this.id = id;
             this.excluir = excluir;
@@ -65,7 +67,7 @@ namespace Sistema_Bloqueio
                 else
                     usuario.Adm = 'N';
 
-                usuario.SalvarUsuario();
+                usuario.SalvarUsuario(this.nomeUsuario);
                 this.Close();
             }
         }
@@ -97,6 +99,11 @@ namespace Sistema_Bloqueio
         private void btnExcluir_Click(object sender, EventArgs e)
         {               
             usuario.Excluir();
+            this.Close();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
             this.Close();
         }
     }

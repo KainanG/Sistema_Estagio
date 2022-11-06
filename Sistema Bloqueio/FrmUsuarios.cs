@@ -10,11 +10,19 @@ namespace Sistema_Bloqueio
 {
     public partial class FrmUsuarios : Form
     {
+        public string nomeUsu { get; set; }
         DataTable dt = new DataTable();
         public FrmUsuarios()
         {
             InitializeComponent();
             Inicializar();
+        }
+
+        public FrmUsuarios(string nomeUsuario)
+        {
+            InitializeComponent();
+            Inicializar();
+            nomeUsu = nomeUsuario;
         }
 
         private void Inicializar()
@@ -61,7 +69,7 @@ namespace Sistema_Bloqueio
         {
             var id = Convert.ToInt32(dgvUsuarios.Rows[dgvUsuarios.CurrentCell.RowIndex].Cells["Id"].Value);
 
-            using(var frm = new FrmUsuariosCadastro(id))
+            using(var frm = new FrmUsuariosCadastro(id, nomeUsu))
             {
                 frm.ShowDialog();
                 dgvUsuarios.DataSource = Usuario.GetUsuarios();
@@ -71,7 +79,7 @@ namespace Sistema_Bloqueio
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            using (var frm = new FrmUsuariosCadastro(0))
+            using (var frm = new FrmUsuariosCadastro(0, nomeUsu))
             {
                 frm.ShowDialog();
                 dgvUsuarios.DataSource = Usuario.GetUsuarios();
@@ -90,7 +98,7 @@ namespace Sistema_Bloqueio
         {
             var id = Convert.ToInt32(dgvUsuarios.Rows[dgvUsuarios.CurrentCell.RowIndex].Cells["Id"].Value);
 
-            using (var frm = new FrmUsuariosCadastro(id, true))
+            using (var frm = new FrmUsuariosCadastro(id, nomeUsu, true))
             {
                 frm.ShowDialog();
                 dgvUsuarios.DataSource = Usuario.GetUsuarios();

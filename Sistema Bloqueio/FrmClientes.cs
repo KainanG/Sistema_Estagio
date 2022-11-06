@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DocumentFormat.OpenXml.Drawing;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -37,6 +38,8 @@ namespace Sistema_Bloqueio
 
         private void ConfigurarGradeClientes()
         {
+            
+            
 
             dgvClientes.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 9, FontStyle.Bold);
             dgvClientes.DefaultCellStyle.Font = new Font("Arial", 9);
@@ -65,17 +68,6 @@ namespace Sistema_Bloqueio
             dgvClientes.Sort(dgvClientes.Columns["nome"], System.ComponentModel.ListSortDirection.Ascending);
         }
 
-        private void btnAlterar_Click(object sender, EventArgs e)
-        {
-            var id = Convert.ToInt32(dgvClientes.Rows[dgvClientes.CurrentCell.RowIndex].Cells["id"].Value);
-
-            using (var frm = new FrmClientesCadastro(id))
-            {
-                frm.ShowDialog();
-                dgvClientes.DataSource = Cliente.GetClientes();
-                ConfigurarGradeClientes();
-            }
-        }
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
@@ -93,5 +85,23 @@ namespace Sistema_Bloqueio
             dgvClientes.DataSource = dt;
             ConfigurarGradeClientes();
         }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            var id = Convert.ToInt32(dgvClientes.Rows[dgvClientes.CurrentCell.RowIndex].Cells["Id"].Value);
+            Cliente cliente = new Cliente();
+            cliente.Id = id;
+            cliente.Excluir();
+            dt = Cliente.GetClientes("");
+            dgvClientes.DataSource = dt;
+            ConfigurarGradeClientes();
+        }
+
+        private void btnBloquear_Click(object sender, EventArgs e)
+        {
+                       
+        }
+
+        
     }
 }

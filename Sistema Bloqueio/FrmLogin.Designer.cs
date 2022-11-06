@@ -28,36 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
             this.bntEntrar = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.txtSenha = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // bntEntrar
             // 
+            this.bntEntrar.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.bntEntrar.Location = new System.Drawing.Point(32, 196);
             this.bntEntrar.Name = "bntEntrar";
             this.bntEntrar.Size = new System.Drawing.Size(75, 23);
             this.bntEntrar.TabIndex = 0;
             this.bntEntrar.Text = "ENTRAR";
-            this.bntEntrar.UseVisualStyleBackColor = true;
+            this.bntEntrar.UseVisualStyleBackColor = false;
             this.bntEntrar.Click += new System.EventHandler(this.bntEntrar_Click);
             // 
             // btnSair
             // 
+            this.btnSair.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btnSair.Location = new System.Drawing.Point(211, 196);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(75, 23);
             this.btnSair.TabIndex = 1;
             this.btnSair.Text = "SAIR";
-            this.btnSair.UseVisualStyleBackColor = true;
+            this.btnSair.UseVisualStyleBackColor = false;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // txtUsuario
             // 
+            this.txtUsuario.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.txtUsuario.Location = new System.Drawing.Point(32, 50);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(254, 23);
@@ -65,6 +71,7 @@
             // 
             // txtSenha
             // 
+            this.txtSenha.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.txtSenha.Location = new System.Drawing.Point(32, 132);
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.PasswordChar = '*';
@@ -91,19 +98,38 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "SENHA";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BackgroundImage = global::Sistema_Bloqueio.Properties.Resources.Herculano_Icon;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.ErrorImage = global::Sistema_Bloqueio.Properties.Resources.Herculano_Icon;
+            this.pictureBox1.InitialImage = null;
+            this.pictureBox1.Location = new System.Drawing.Point(112, 161);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(93, 88);
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(329, 252);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtSenha);
             this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.bntEntrar);
+            this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmLogin";
-            this.Text = "FrmLogin";
+            this.Text = "Herculano Login";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -117,5 +143,6 @@
         private TextBox txtSenha;
         private Label label1;
         private Label label2;
+        private PictureBox pictureBox1;
     }
 }

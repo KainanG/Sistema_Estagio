@@ -51,13 +51,14 @@ namespace Sistema_Bloqueio
         }
 
 
-        public void SalvarUsuario()
+        public void SalvarUsuario(string nomeUsuario)
         {
             var sql = "";
 
             if (this.Id == 0)
             {
-                sql = "INSERT INTO usuarios (nome, email, usuario, senha, adm) VALUES (@nome, @email, @usuario, @senha, @adm)";
+                sql = "INSERT INTO usuarios (nome, email, usuario, senha, adm) VALUES (@nome, @email, @usuario, @senha, @adm);" +
+                    "INSERT INTO logs (usuario, data, form) VALUES (@usua, @data, @form)";
             }
             else
             {
@@ -76,7 +77,9 @@ namespace Sistema_Bloqueio
                         cmd.Parameters.AddWithValue("@usuario", this.Login);
                         cmd.Parameters.AddWithValue("@senha", this.Senha);
                         cmd.Parameters.AddWithValue("@adm", this.Adm);
-
+                        cmd.Parameters.AddWithValue("@usua", nomeUsuario.Replace('\'', ' ').Trim());
+                        cmd.Parameters.AddWithValue("@data", DateTime.Today.ToString("dd/MM/yyyy"));
+                        cmd.Parameters.AddWithValue("@form", "Usuário");
                         cmd.ExecuteNonQuery();
                     }
                 }

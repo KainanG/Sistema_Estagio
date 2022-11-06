@@ -39,6 +39,10 @@
             this.btnPago = new System.Windows.Forms.Button();
             this.btnDestacar = new System.Windows.Forms.Button();
             this.btnPendente = new System.Windows.Forms.Button();
+            this.lbl1 = new System.Windows.Forms.Label();
+            this.lbl2 = new System.Windows.Forms.Label();
+            this.lblPago = new System.Windows.Forms.Label();
+            this.lblPendente = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_faturas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,7 +68,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgv_faturas.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgv_faturas.Location = new System.Drawing.Point(12, 76);
+            this.dgv_faturas.Location = new System.Drawing.Point(12, 115);
             this.dgv_faturas.Name = "dgv_faturas";
             this.dgv_faturas.ReadOnly = true;
             this.dgv_faturas.RowTemplate.Height = 25;
@@ -73,14 +77,14 @@
             // 
             // txtBuscar
             // 
-            this.txtBuscar.Location = new System.Drawing.Point(250, 47);
+            this.txtBuscar.Location = new System.Drawing.Point(250, 86);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(270, 23);
             this.txtBuscar.TabIndex = 1;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(526, 47);
+            this.button1.Location = new System.Drawing.Point(526, 86);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 2;
@@ -92,7 +96,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(12, 52);
+            this.label1.Location = new System.Drawing.Point(12, 91);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(232, 21);
             this.label1.TabIndex = 3;
@@ -148,11 +152,51 @@
             this.btnPendente.UseVisualStyleBackColor = true;
             this.btnPendente.Click += new System.EventHandler(this.btnPendente_Click);
             // 
+            // lbl1
+            // 
+            this.lbl1.AutoSize = true;
+            this.lbl1.ForeColor = System.Drawing.Color.ForestGreen;
+            this.lbl1.Location = new System.Drawing.Point(12, 47);
+            this.lbl1.Name = "lbl1";
+            this.lbl1.Size = new System.Drawing.Size(82, 15);
+            this.lbl1.TabIndex = 9;
+            this.lbl1.Text = "Faturas Pagas:";
+            // 
+            // lbl2
+            // 
+            this.lbl2.AutoSize = true;
+            this.lbl2.ForeColor = System.Drawing.Color.Red;
+            this.lbl2.Location = new System.Drawing.Point(12, 66);
+            this.lbl2.Name = "lbl2";
+            this.lbl2.Size = new System.Drawing.Size(106, 15);
+            this.lbl2.TabIndex = 10;
+            this.lbl2.Text = "Faturas Pendentes:";
+            // 
+            // lblPago
+            // 
+            this.lblPago.AutoSize = true;
+            this.lblPago.Location = new System.Drawing.Point(93, 47);
+            this.lblPago.Name = "lblPago";
+            this.lblPago.Size = new System.Drawing.Size(0, 15);
+            this.lblPago.TabIndex = 11;
+            // 
+            // lblPendente
+            // 
+            this.lblPendente.AutoSize = true;
+            this.lblPendente.Location = new System.Drawing.Point(114, 66);
+            this.lblPendente.Name = "lblPendente";
+            this.lblPendente.Size = new System.Drawing.Size(0, 15);
+            this.lblPendente.TabIndex = 12;
+            // 
             // FrmFaturas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(694, 535);
+            this.ClientSize = new System.Drawing.Size(694, 570);
+            this.Controls.Add(this.lblPendente);
+            this.Controls.Add(this.lblPago);
+            this.Controls.Add(this.lbl2);
+            this.Controls.Add(this.lbl1);
             this.Controls.Add(this.btnPendente);
             this.Controls.Add(this.btnDestacar);
             this.Controls.Add(this.btnPago);
@@ -181,5 +225,9 @@
         private Button btnPago;
         private Button btnDestacar;
         private Button btnPendente;
+        private Label lbl1;
+        private Label lbl2;
+        private Label lblPago;
+        private Label lblPendente;
     }
 }

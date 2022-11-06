@@ -54,7 +54,7 @@ namespace Sistema_Bloqueio
             }
         }
 
-        public void SalvarResponsavel()
+        public void SalvarResponsavel(string nomeUsuario)
         {
             var sql = "";
 
@@ -62,7 +62,8 @@ namespace Sistema_Bloqueio
             {*/
                 sql = "INSERT INTO responsaveis (nome, celular, telefone, cpf, rg, bloqueado) VALUES (@nome, @celular, @telefone, @cpf, @rg, @status);" +
                     "INSERT INTO enderecos (cep, estado, cidade, bairro, rua, numero, complemento, id_responsavel)" +
-                    "VALUES (@cep, @estado, @cidade, @bairro, @rua, @numero, @complemento, LAST_INSERT_ID());";
+                    "VALUES (@cep, @estado, @cidade, @bairro, @rua, @numero, @complemento, LAST_INSERT_ID());" +
+                    "INSERT INTO logs (usuario, data, form) VALUES (@usuario, @data, @form)";
            /* }
             else
             {
@@ -89,7 +90,9 @@ namespace Sistema_Bloqueio
                         cmd.Parameters.AddWithValue("@rua", this.Enderecos.FirstOrDefault().Rua);
                         cmd.Parameters.AddWithValue("@numero", this.Enderecos.FirstOrDefault().Numero);
                         cmd.Parameters.AddWithValue("@complemento", this.Enderecos.FirstOrDefault().Complemento);
-
+                        cmd.Parameters.AddWithValue("@usuario", nomeUsuario.Replace('\'', ' ').Trim());
+                        cmd.Parameters.AddWithValue("@data", DateTime.Today.ToString("dd/MM/yyyy"));
+                        cmd.Parameters.AddWithValue("@form", "Responsável");
 
 
 

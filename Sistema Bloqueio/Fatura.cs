@@ -73,14 +73,15 @@ namespace Sistema_Bloqueio
         }
 
 
-        public void SalvarFatura()
+        public void SalvarFatura(string nomeUsuario)
         {
             var sql = "";
 
             if (this.Id == 0)
             {
-                sql = "INSERT INTO faturas (valor, mes, vencimento, repete, faturapaga, cliente_idcliente) VALUES (@valor, @mes, @vencimento, @repete, @faturapaga, @cliente_idcliente)";
-                  
+                sql = "INSERT INTO faturas (valor, mes, vencimento, repete, faturapaga, cliente_idcliente) VALUES (@valor, @mes, @vencimento, @repete, @faturapaga, @cliente_idcliente);" +
+                    "INSERT INTO logs (usuario, data, form) VALUES (@usuario, @data, @form)";
+
             }
             else
             {
@@ -100,7 +101,9 @@ namespace Sistema_Bloqueio
                         cmd.Parameters.AddWithValue("@repete", this.Repete);
                         cmd.Parameters.AddWithValue("@faturapaga", "Não");
                         cmd.Parameters.AddWithValue("@cliente_idcliente", this.Cliente_idcliente);
-
+                        cmd.Parameters.AddWithValue("@usuario", nomeUsuario.Replace('\'', ' ').Trim());
+                        cmd.Parameters.AddWithValue("@data", DateTime.Today.ToString("dd/MM/yyyy"));
+                        cmd.Parameters.AddWithValue("@form", "Fatura");
                         cmd.ExecuteNonQuery();
                     }
                 }

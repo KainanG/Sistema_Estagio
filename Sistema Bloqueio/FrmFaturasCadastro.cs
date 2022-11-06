@@ -12,12 +12,14 @@ namespace Sistema_Bloqueio
 {
     public partial class FrmFaturasCadastro : Form
     {
+        public string nomeUsu { get; set; }
         int id;
         DataTable dt = new DataTable();
         Fatura fatura = new Fatura();
 
-        public FrmFaturasCadastro(int id)
+        public FrmFaturasCadastro(int id,string nomeUsuario)
         {
+            this.nomeUsu = nomeUsuario;
             InitializeComponent();
             Inicializar();
             if (this.id > 0)
@@ -83,7 +85,7 @@ namespace Sistema_Bloqueio
             fatura.Repete = txtRepete.Text;       
             
 
-            fatura.SalvarFatura();
+            fatura.SalvarFatura(this.nomeUsu);
 
             this.Close();
         }
