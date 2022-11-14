@@ -51,6 +51,8 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
             this.txtComplemCliente = new System.Windows.Forms.TextBox();
+            this.dgv_Responsavel = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Responsavel)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -223,7 +225,7 @@
             // btnSalvar
             // 
             this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSalvar.Location = new System.Drawing.Point(645, 312);
+            this.btnSalvar.Location = new System.Drawing.Point(662, 652);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(75, 23);
             this.btnSalvar.TabIndex = 42;
@@ -234,12 +236,13 @@
             // btnCancelar
             // 
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Location = new System.Drawing.Point(735, 312);
+            this.btnCancelar.Location = new System.Drawing.Point(752, 652);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 43;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // label22
             // 
@@ -258,11 +261,21 @@
             this.txtComplemCliente.Size = new System.Drawing.Size(248, 23);
             this.txtComplemCliente.TabIndex = 47;
             // 
+            // dgv_Responsavel
+            // 
+            this.dgv_Responsavel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_Responsavel.Location = new System.Drawing.Point(12, 277);
+            this.dgv_Responsavel.Name = "dgv_Responsavel";
+            this.dgv_Responsavel.RowTemplate.Height = 25;
+            this.dgv_Responsavel.Size = new System.Drawing.Size(815, 359);
+            this.dgv_Responsavel.TabIndex = 48;
+            // 
             // FrmClientesCadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(839, 357);
+            this.ClientSize = new System.Drawing.Size(839, 687);
+            this.Controls.Add(this.dgv_Responsavel);
             this.Controls.Add(this.txtComplemCliente);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.btnCancelar);
@@ -288,6 +301,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FrmClientesCadastro";
             this.Text = "FrmClientesCadastro";
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Responsavel)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -318,5 +332,6 @@
         private Button btnCancelar;
         private Label label22;
         private TextBox txtComplemCliente;
+        private DataGridView dgv_Responsavel;
     }
 }

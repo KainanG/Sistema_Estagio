@@ -15,6 +15,8 @@ namespace Sistema_Bloqueio
         public string nomeUsu { get; set; }
 
         int id;
+        DataTable dt = new DataTable();
+
         Cliente cliente = new Cliente();
         Endereco enderecoCliente = new Endereco();
         public FrmClientesCadastro(int id)
@@ -34,11 +36,60 @@ namespace Sistema_Bloqueio
             }
         }
 
+        private void Inicializar()
+        {
+            dt = Responsavel.GetResponsaveis();
+            dgv_Responsavel.DataSource = dt;
+            ConfigurarGradeResponsavel();
+        }
+
+        private void ConfigurarGradeResponsavel()
+        {
+
+            dgv_Responsavel.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 9, FontStyle.Bold);
+            dgv_Responsavel.DefaultCellStyle.Font = new Font("Arial", 9);
+            dgv_Responsavel.RowHeadersWidth = 25;
+
+            dgv_Responsavel.Columns["id"].HeaderText = "ID";
+            dgv_Responsavel.Columns["id"].Width = 50;
+            dgv_Responsavel.Columns["id"].DefaultCellStyle.Padding = new Padding(5, 0, 0, 0);
+            //dgv_Clientes.Columns["id"].Visible = false;
+
+            dgv_Responsavel.Columns["nome"].HeaderText = "NOME";
+            dgv_Responsavel.Columns["nome"].Width = 300;
+            dgv_Responsavel.Columns["nome"].DefaultCellStyle.Padding = new Padding(5, 0, 0, 0);
+
+            dgv_Responsavel.Columns["celular"].HeaderText = "CELULAR";
+            dgv_Responsavel.Columns["celular"].Width = 90;
+            dgv_Responsavel.Columns["celular"].DefaultCellStyle.Padding = new Padding(5, 0, 0, 0);
+
+            dgv_Responsavel.Columns["telefone"].HeaderText = "TELEFONE";
+            dgv_Responsavel.Columns["telefone"].Width = 90;
+            dgv_Responsavel.Columns["telefone"].DefaultCellStyle.Padding = new Padding(5, 0, 0, 0);
+
+            dgv_Responsavel.Columns["cpf"].HeaderText = "CPF";
+            dgv_Responsavel.Columns["cpf"].Width = 150;
+            dgv_Responsavel.Columns["cpf"].DefaultCellStyle.Padding = new Padding(5, 0, 0, 0);
+
+            dgv_Responsavel.Columns["rg"].HeaderText = "RG";
+            dgv_Responsavel.Columns["rg"].Width = 150;
+            dgv_Responsavel.Columns["rg"].DefaultCellStyle.Padding = new Padding(5, 0, 0, 0);
+
+            dgv_Responsavel.Columns["bloqueado"].HeaderText = "STATUS";
+            dgv_Responsavel.Columns["bloqueado"].Width = 90;
+            dgv_Responsavel.Columns["bloqueado"].DefaultCellStyle.Padding = new Padding(5, 0, 0, 0);
+
+            dgv_Responsavel.Sort(dgv_Responsavel.Columns["nome"], System.ComponentModel.ListSortDirection.Ascending);
+
+
+        }
+
         public FrmClientesCadastro(int id, string nomeUsuario)
         {
             nomeUsu = nomeUsuario;
 
             InitializeComponent();
+            Inicializar();
             this.id = id;
 
             if (this.id > 0)
@@ -75,6 +126,7 @@ namespace Sistema_Bloqueio
         {
             if (ValidarCadastro())
             {
+                cliente.Id_responsavel = Convert.ToInt32(dgv_Responsavel.Rows[dgv_Responsavel.CurrentCell.RowIndex].Cells["id"].Value);
                 cliente.Nome = txtNomeCliente.Text;             
                 cliente.Cnpj = txtCnpjCliente.Text;                                      
                 if (chkAtivoCliente.Checked == true)
@@ -98,6 +150,11 @@ namespace Sistema_Bloqueio
                
                 this.Close();
             }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -16,8 +16,8 @@ namespace Sistema_Bloqueio
         public string Nome { get; set; }
         public string Cnpj { get; set; }
         public char Status { get; set; }
-        public string usuario { get; set; } 
-
+        public string usuario { get; set; }
+        public int Id_responsavel { get; set; }
         public List<Endereco> Enderecos { get; set; }
         public List<Responsavel> Responsaveis { get; set; }
 
@@ -80,7 +80,7 @@ namespace Sistema_Bloqueio
 
             if (this.Id == 0)
             {
-                sql = "INSERT INTO clientes (nome, cnpj, status) VALUES (@nome, @cnpj, @status);" +
+                sql = "INSERT INTO clientes (nome, cnpj, status, id_responsavel) VALUES (@nome, @cnpj, @status, @idresponsavel);" +
                     "INSERT INTO enderecos (cep, estado, cidade, bairro, rua, numero, complemento, cliente_idcliente)" +
                     "VALUES (@cep, @estado, @cidade, @bairro, @rua, @numero, @complemento, LAST_INSERT_ID());" +
                     "INSERT INTO logs (usuario, data, form) VALUES (@usuario, @data, @form)";
@@ -100,6 +100,7 @@ namespace Sistema_Bloqueio
                         cmd.Parameters.AddWithValue("@nome", this.Nome);                      
                         cmd.Parameters.AddWithValue("@cnpj", this.Cnpj);
                         cmd.Parameters.AddWithValue("@status", this.Status);
+                        cmd.Parameters.AddWithValue("@idresponsavel", this.Id_responsavel);
                         cmd.Parameters.AddWithValue("@cep", this.Enderecos.FirstOrDefault().Cep);
                         cmd.Parameters.AddWithValue("@estado", this.Enderecos.FirstOrDefault().Estado);
                         cmd.Parameters.AddWithValue("@cidade", this.Enderecos.FirstOrDefault().Cidade);
@@ -155,8 +156,33 @@ namespace Sistema_Bloqueio
             return dt;
         }
 
+        public void BloquearCliente(bool pendente = false)
+        {
 
-      }
+
+            var sql = "UPDATE clientes SET status=@status WHERE id=" + this.Id;
+
+            try
+            {
+                using (var cn = new MySqlConnection(Conn.strConn))
+                {
+                    cn.Open();
+                    using (var cmd = new MySqlCommand(sql, cn))
+                    {
+
+                        cmd.Parameters.AddWithValue("@status", pendente == false ? "N" : "S");
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+
+    }
 
 
 

@@ -30,9 +30,9 @@ namespace Sistema_Bloqueio
         {
             try
             {
+                string senha = Usuario.Criptografar(txtSenha.Text);
                 vldusuario = "'" + txtUsuario.Text + "'";
-                string vldsenha = "'" + txtSenha.Text + "'";
-                string sql = "SELECT COUNT(*) FROM usuarios WHERE usuario = " + vldusuario + " and senha = " + vldsenha;
+                string sql = "SELECT COUNT(*) FROM usuarios WHERE usuario = " + vldusuario + " and senha =  '" + senha.Replace('\'', ' ').Trim() + "'"; 
                 Conexao = new MySqlConnection(data_source);
                 Conexao.Open();
 
@@ -53,7 +53,7 @@ namespace Sistema_Bloqueio
                         menu.Show();
                         this.Hide();
 
-                        string sql2 = "SELECT COUNT(*) FROM usuarios WHERE usuario = " + vldusuario + " and senha = " + vldsenha + " and adm = 'S'";
+                        string sql2 = "SELECT COUNT(*) FROM usuarios WHERE usuario = " + vldusuario + " and senha = '" + senha.Replace('\'', ' ').Trim() + "' and adm = 'S'";
                         Conexao = new MySqlConnection(data_source);
                         Conexao.Open();                     
                         MySqlCommand comando2 = new MySqlCommand(sql2, Conexao);

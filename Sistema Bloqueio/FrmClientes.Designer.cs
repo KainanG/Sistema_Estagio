@@ -29,32 +29,24 @@
         private void InitializeComponent()
         {
             this.dgvClientes = new System.Windows.Forms.DataGridView();
-            this.chk = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnBloquear = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
+            this.btnDesbloquear = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvClientes
             // 
             this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.chk});
             this.dgvClientes.Location = new System.Drawing.Point(12, 87);
             this.dgvClientes.Name = "dgvClientes";
             this.dgvClientes.RowTemplate.Height = 25;
-            this.dgvClientes.Size = new System.Drawing.Size(696, 534);
-            this.dgvClientes.TabIndex = 0;        
-            // 
-            // chk
-            // 
-            this.chk.HeaderText = "";
-            this.chk.Name = "chk";
-            this.chk.Width = 50;
+            this.dgvClientes.Size = new System.Drawing.Size(618, 534);
+            this.dgvClientes.TabIndex = 0;
             // 
             // btnCadastrar
             // 
@@ -70,7 +62,7 @@
             // btnBuscar
             // 
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscar.Location = new System.Drawing.Point(633, 58);
+            this.btnBuscar.Location = new System.Drawing.Point(555, 58);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 23);
             this.btnBuscar.TabIndex = 3;
@@ -82,7 +74,7 @@
             // 
             this.txtBuscar.Location = new System.Drawing.Point(326, 58);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(301, 23);
+            this.txtBuscar.Size = new System.Drawing.Size(223, 23);
             this.txtBuscar.TabIndex = 4;
             // 
             // label1
@@ -117,11 +109,23 @@
             this.btnExcluir.UseVisualStyleBackColor = true;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
+            // btnDesbloquear
+            // 
+            this.btnDesbloquear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDesbloquear.Location = new System.Drawing.Point(255, 12);
+            this.btnDesbloquear.Name = "btnDesbloquear";
+            this.btnDesbloquear.Size = new System.Drawing.Size(83, 23);
+            this.btnDesbloquear.TabIndex = 8;
+            this.btnDesbloquear.Text = "Desbloquear";
+            this.btnDesbloquear.UseVisualStyleBackColor = true;
+            this.btnDesbloquear.Click += new System.EventHandler(this.btnDesbloquear_Click);
+            // 
             // FrmClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(722, 633);
+            this.ClientSize = new System.Drawing.Size(643, 633);
+            this.Controls.Add(this.btnDesbloquear);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnBloquear);
             this.Controls.Add(this.label1);
@@ -144,8 +148,8 @@
         private Button btnBuscar;
         private TextBox txtBuscar;
         private Label label1;
-        private DataGridViewCheckBoxColumn chk;
         private Button btnBloquear;
         private Button btnExcluir;
+        private Button btnDesbloquear;
     }
 }

@@ -99,9 +99,23 @@ namespace Sistema_Bloqueio
 
         private void btnBloquear_Click(object sender, EventArgs e)
         {
-                       
+            var id = Convert.ToInt32(dgvClientes.Rows[dgvClientes.CurrentCell.RowIndex].Cells["Id"].Value);
+            Cliente clientes = new Cliente();
+            clientes.Id = id;
+            clientes.BloquearCliente();
+            dgvClientes.DataSource = Cliente.GetClientes();
+            ConfigurarGradeClientes();
+                    
         }
 
-        
+        private void btnDesbloquear_Click(object sender, EventArgs e)
+        {
+            var id = Convert.ToInt32(dgvClientes.Rows[dgvClientes.CurrentCell.RowIndex].Cells["Id"].Value);
+            Cliente clientes = new Cliente();
+            clientes.Id = id;
+            clientes.BloquearCliente(true);
+            dgvClientes.DataSource = Cliente.GetClientes();
+            ConfigurarGradeClientes();
+        }
     }
 }

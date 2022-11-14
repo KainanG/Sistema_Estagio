@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -53,6 +54,7 @@ namespace Sistema_Bloqueio
 
         public void SalvarUsuario(string nomeUsuario)
         {
+            string senha = Usuario.Criptografar(this.Senha);
             var sql = "";
 
             if (this.Id == 0)
@@ -75,7 +77,7 @@ namespace Sistema_Bloqueio
                         cmd.Parameters.AddWithValue("@nome", this.Nome);
                         cmd.Parameters.AddWithValue("@email", this.Email);
                         cmd.Parameters.AddWithValue("@usuario", this.Login);
-                        cmd.Parameters.AddWithValue("@senha", this.Senha);
+                        cmd.Parameters.AddWithValue("@senha", senha.Replace('\'', ' ').Trim());
                         cmd.Parameters.AddWithValue("@adm", this.Adm);
                         cmd.Parameters.AddWithValue("@usua", nomeUsuario.Replace('\'', ' ').Trim());
                         cmd.Parameters.AddWithValue("@data", DateTime.Today.ToString("dd/MM/yyyy"));
@@ -135,6 +137,21 @@ namespace Sistema_Bloqueio
                 MessageBox.Show(ex.Message);              
             }
             return dt;
+        }
+
+        public static string Criptografar(string senha)
+        {
+            MD5 md5Hash = MD5.Create();
+
+            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(senha));
+
+            StringBuilder sBuilder = new StringBuilder();
+
+            for (int i = 0; i < data.Length; i++)
+            {
+                sBuilder.Append(data[i].ToString("x2"));
+            }
+            return sBuilder.ToString();
         }
     }
 }

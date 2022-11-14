@@ -111,7 +111,7 @@ namespace Sistema_Bloqueio
         public static DataTable GetResponsaveis(string procurar = "")
         {
             var dt = new DataTable();
-            var sql = "SELECT id, nome, celular, telefone, cpf, rg, status FROM db_estagioSis.responsaveis";
+            var sql = "SELECT id, nome, celular, telefone, cpf, rg, bloqueado FROM db_estagioSis.responsaveis";
 
             if (procurar != "")
                 sql += " WHERE nome LIKE '%" + procurar + "%' OR cpf LIKE '%" + procurar + "%'";
