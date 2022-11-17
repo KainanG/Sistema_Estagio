@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmFaturasCadastro));
             this.label1 = new System.Windows.Forms.Label();
             this.lblId = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -75,7 +76,9 @@
             // 
             // txtMes
             // 
+            this.txtMes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMes.Location = new System.Drawing.Point(57, 76);
+            this.txtMes.MaxLength = 10;
             this.txtMes.Name = "txtMes";
             this.txtMes.Size = new System.Drawing.Size(100, 23);
             this.txtMes.TabIndex = 4;
@@ -92,7 +95,9 @@
             // 
             // txtVencimento
             // 
+            this.txtVencimento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtVencimento.Location = new System.Drawing.Point(281, 76);
+            this.txtVencimento.MaxLength = 10;
             this.txtVencimento.Name = "txtVencimento";
             this.txtVencimento.Size = new System.Drawing.Size(100, 23);
             this.txtVencimento.TabIndex = 6;
@@ -110,7 +115,9 @@
             // 
             // txtRepete
             // 
+            this.txtRepete.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtRepete.Location = new System.Drawing.Point(503, 76);
+            this.txtRepete.MaxLength = 3;
             this.txtRepete.Name = "txtRepete";
             this.txtRepete.Size = new System.Drawing.Size(81, 23);
             this.txtRepete.TabIndex = 8;
@@ -127,7 +134,9 @@
             // 
             // txtValor
             // 
+            this.txtValor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtValor.Location = new System.Drawing.Point(698, 76);
+            this.txtValor.MaxLength = 10;
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(104, 23);
             this.txtValor.TabIndex = 10;
@@ -144,6 +153,7 @@
             // 
             // btnSalvar
             // 
+            this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSalvar.Location = new System.Drawing.Point(727, 12);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(75, 23);
@@ -169,8 +179,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblId);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmFaturasCadastro";
-            this.Text = "FrmFaturasCadastro";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Cadastro de Faturas";
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Clientes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

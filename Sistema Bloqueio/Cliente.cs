@@ -133,7 +133,8 @@ namespace Sistema_Bloqueio
             
 
             var dt = new DataTable();
-            var sql = "SELECT id, nome, cnpj, status FROM db_estagioSis.clientes";
+            //var sql = "SELECT id, nome, cnpj, status FROM db_estagioSis.clientes";
+            var sql = "USE `db_estagioSis`; SELECT cliente.id, cliente.nome, cliente.cnpj, cliente.status, responsavel.nome FROM clientes as cliente LEFT JOIN responsaveis as responsavel ON responsavel.id = cliente.id_responsavel";
 
             if (procurar != "")
                 sql += " WHERE nome LIKE '%" + procurar + "%' OR cnpj LIKE '%" + procurar + "%'";

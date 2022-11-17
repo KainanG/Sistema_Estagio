@@ -1,8 +1,11 @@
-﻿using DocumentFormat.OpenXml.Drawing;
+﻿using ClosedXML.Excel;
+using DocumentFormat.OpenXml.Drawing;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -61,11 +64,11 @@ namespace Sistema_Bloqueio
             dgvClientes.Columns["cnpj"].Width = 200;
             dgvClientes.Columns["cnpj"].DefaultCellStyle.Padding = new Padding(5, 0, 0, 0);
 
-            /*dgvClientes.Columns["fatura"].HeaderText = "FATURA";
-            dgvClientes.Columns["fatura"].Width = 300;
-            dgvClientes.Columns["fatura"].DefaultCellStyle.Padding = new Padding(5, 0, 0, 0);*/
+            dgvClientes.Columns["nome1"].HeaderText = "RESPONSAVEL";
+            dgvClientes.Columns["nome1"].Width = 300;
+            dgvClientes.Columns["nome1"].DefaultCellStyle.Padding = new Padding(5, 0, 0, 0);
 
-            dgvClientes.Sort(dgvClientes.Columns["nome"], System.ComponentModel.ListSortDirection.Ascending);
+            //dgvClientes.Sort(dgvClientes.Columns["nome"], System.ComponentModel.ListSortDirection.Ascending);
         }
 
 
@@ -116,6 +119,48 @@ namespace Sistema_Bloqueio
             clientes.BloquearCliente(true);
             dgvClientes.DataSource = Cliente.GetClientes();
             ConfigurarGradeClientes();
+        }
+
+        private void btnRelatorio_Click(object sender, EventArgs e)
+        {
+            using (var workbook = new XLWorkbook())
+            {
+                var worksheet = workbook.Worksheets.Add("Usuários");
+
+                worksheet.Cell("A1").Value = "ID";
+                worksheet.Cell("B1").Value = "NOME";
+                worksheet.Cell("C1").Value = "CNPJ";
+                worksheet.Cell("D1").Value = "ATIVO";
+                           
+
+                var conexao = new MySqlConnection("server=localhost;database=db_estagioSis;uid=root;pwd=!Kg!s2601#");
+                string strSQL = "USE `db_estagioSis`; SELECT cliente.id, cliente.nome, cliente.cnpj, cliente.status," +
+                    " responsavel.nome FROM clientes as cliente LEFT JOIN responsaveis as responsavel ON responsavel.id = cliente.id_responsavel";
+
+                var comando = new MySqlCommand(strSQL, conexao);
+                using (conexao)
+                {
+                    conexao.Open();
+                    var dr = comando.ExecuteReader();
+                    int linha = 1;
+
+                    while (dr.Read())
+                    {
+                        linha++;
+                        worksheet.Cell("A" + linha).Value = dr["id"];
+                        worksheet.Cell("B" + linha).Value = dr["nome"];
+                        worksheet.Cell("C" + linha).Value = dr["cnpj"];
+                        worksheet.Cell("D" + linha).Value = dr["status"];
+                        
+                       
+                    }
+
+                    conexao.Close();
+                };
+
+                workbook.SaveAs(@"C:\Users\kaina\Downloads\Relatorio_Cliente.xlsx");
+            }
+            Process.Start(new ProcessStartInfo(@"C:\Users\kaina\Downloads\Relatorio_Cliente.xlsx") { UseShellExecute = true });
         }
     }
 }

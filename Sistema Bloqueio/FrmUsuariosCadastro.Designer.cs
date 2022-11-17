@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmUsuariosCadastro));
             this.label1 = new System.Windows.Forms.Label();
             this.lblId = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -75,16 +76,18 @@
             // 
             // txtNome
             // 
+            this.txtNome.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNome.Location = new System.Drawing.Point(12, 140);
-            this.txtNome.MaxLength = 100;
+            this.txtNome.MaxLength = 200;
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(258, 23);
             this.txtNome.TabIndex = 3;
             // 
             // txtEmail
             // 
+            this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEmail.Location = new System.Drawing.Point(306, 140);
-            this.txtEmail.MaxLength = 50;
+            this.txtEmail.MaxLength = 100;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(261, 23);
             this.txtEmail.TabIndex = 4;
@@ -111,6 +114,7 @@
             // 
             // txtUsuario
             // 
+            this.txtUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtUsuario.Location = new System.Drawing.Point(12, 215);
             this.txtUsuario.MaxLength = 10;
             this.txtUsuario.Name = "txtUsuario";
@@ -129,8 +133,9 @@
             // 
             // txtSenha
             // 
+            this.txtSenha.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSenha.Location = new System.Drawing.Point(206, 215);
-            this.txtSenha.MaxLength = 20;
+            this.txtSenha.MaxLength = 10;
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.PasswordChar = '*';
             this.txtSenha.Size = new System.Drawing.Size(154, 23);
@@ -201,8 +206,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblId);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmUsuariosCadastro";
-            this.Text = "FrmUsuariosCadastro";
+            this.Text = "Cadastro de Usuários";
             this.ResumeLayout(false);
             this.PerformLayout();
 

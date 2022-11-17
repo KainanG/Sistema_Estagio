@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmClientesCadastro));
             this.label1 = new System.Windows.Forms.Label();
             this.lblId = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -129,6 +130,7 @@
             // txtNomeCliente
             // 
             this.txtNomeCliente.Location = new System.Drawing.Point(12, 64);
+            this.txtNomeCliente.MaxLength = 500;
             this.txtNomeCliente.Name = "txtNomeCliente";
             this.txtNomeCliente.Size = new System.Drawing.Size(369, 23);
             this.txtNomeCliente.TabIndex = 7;
@@ -136,6 +138,7 @@
             // txtCnpjCliente
             // 
             this.txtCnpjCliente.Location = new System.Drawing.Point(424, 64);
+            this.txtCnpjCliente.MaxLength = 14;
             this.txtCnpjCliente.Name = "txtCnpjCliente";
             this.txtCnpjCliente.Size = new System.Drawing.Size(265, 23);
             this.txtCnpjCliente.TabIndex = 8;
@@ -143,6 +146,7 @@
             // txtCepCliente
             // 
             this.txtCepCliente.Location = new System.Drawing.Point(12, 155);
+            this.txtCepCliente.MaxLength = 8;
             this.txtCepCliente.Name = "txtCepCliente";
             this.txtCepCliente.Size = new System.Drawing.Size(173, 23);
             this.txtCepCliente.TabIndex = 9;
@@ -150,6 +154,7 @@
             // txtEstadoCliente
             // 
             this.txtEstadoCliente.Location = new System.Drawing.Point(226, 155);
+            this.txtEstadoCliente.MaxLength = 100;
             this.txtEstadoCliente.Name = "txtEstadoCliente";
             this.txtEstadoCliente.Size = new System.Drawing.Size(155, 23);
             this.txtEstadoCliente.TabIndex = 10;
@@ -167,6 +172,7 @@
             // txtCidadeCliente
             // 
             this.txtCidadeCliente.Location = new System.Drawing.Point(424, 155);
+            this.txtCidadeCliente.MaxLength = 200;
             this.txtCidadeCliente.Name = "txtCidadeCliente";
             this.txtCidadeCliente.Size = new System.Drawing.Size(175, 23);
             this.txtCidadeCliente.TabIndex = 12;
@@ -184,6 +190,7 @@
             // txtBairroCliente
             // 
             this.txtBairroCliente.Location = new System.Drawing.Point(645, 155);
+            this.txtBairroCliente.MaxLength = 200;
             this.txtBairroCliente.Name = "txtBairroCliente";
             this.txtBairroCliente.Size = new System.Drawing.Size(182, 23);
             this.txtBairroCliente.TabIndex = 14;
@@ -211,6 +218,7 @@
             // txtRuaCliente
             // 
             this.txtRuaCliente.Location = new System.Drawing.Point(12, 231);
+            this.txtRuaCliente.MaxLength = 350;
             this.txtRuaCliente.Name = "txtRuaCliente";
             this.txtRuaCliente.Size = new System.Drawing.Size(369, 23);
             this.txtRuaCliente.TabIndex = 17;
@@ -218,6 +226,7 @@
             // txtNumCliente
             // 
             this.txtNumCliente.Location = new System.Drawing.Point(424, 231);
+            this.txtNumCliente.MaxLength = 5;
             this.txtNumCliente.Name = "txtNumCliente";
             this.txtNumCliente.Size = new System.Drawing.Size(100, 23);
             this.txtNumCliente.TabIndex = 18;
@@ -257,6 +266,7 @@
             // txtComplemCliente
             // 
             this.txtComplemCliente.Location = new System.Drawing.Point(579, 231);
+            this.txtComplemCliente.MaxLength = 200;
             this.txtComplemCliente.Name = "txtComplemCliente";
             this.txtComplemCliente.Size = new System.Drawing.Size(248, 23);
             this.txtComplemCliente.TabIndex = 47;
@@ -299,8 +309,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblId);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmClientesCadastro";
-            this.Text = "FrmClientesCadastro";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Cadastro de Clientes";
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Responsavel)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

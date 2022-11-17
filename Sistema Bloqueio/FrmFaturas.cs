@@ -1,10 +1,12 @@
-﻿using Google.Protobuf;
+﻿using ClosedXML.Excel;
+using Google.Protobuf;
 using Microsoft.EntityFrameworkCore.Query.Internal;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
@@ -403,6 +405,51 @@ namespace Sistema_Bloqueio
             }
             lblPago.Text = pagas;
             lblPendente.Text = pendentes;
+        }
+
+        private void btnRelatorio_Click(object sender, EventArgs e)
+        {
+            using (var workbook = new XLWorkbook())
+            {
+                var worksheet = workbook.Worksheets.Add("Usuários");
+
+                worksheet.Cell("A1").Value = "ID";
+                worksheet.Cell("B1").Value = "VALOR";
+                worksheet.Cell("C1").Value = "MÊS";
+                worksheet.Cell("D1").Value = "VENCIMENTO";
+                worksheet.Cell("E1").Value = "REPETE";
+                worksheet.Cell("F1").Value = "STATUS";
+                worksheet.Cell("G1").Value = "CLIENTE";
+
+                var conexao = new MySqlConnection("server=localhost;database=db_estagioSis;uid=root;pwd=!Kg!s2601#");
+                string strSQL = "USE `db_estagioSis`; SELECT fatura.id, fatura.valor, fatura.mes, fatura.vencimento, fatura.repete, fatura.faturapaga," +
+                " cliente.nome FROM faturas as fatura LEFT JOIN clientes as cliente ON fatura.cliente_idcliente = cliente.id";
+
+                var comando = new MySqlCommand(strSQL, conexao);
+                using (conexao)
+                {
+                    conexao.Open();
+                    var dr = comando.ExecuteReader();
+                    int linha = 1;
+
+                    while (dr.Read())
+                    {
+                        linha++;
+                        worksheet.Cell("A" + linha).Value = dr["id"];
+                        worksheet.Cell("B" + linha).Value = dr["valor"];
+                        worksheet.Cell("C" + linha).Value = dr["mes"];
+                        worksheet.Cell("D" + linha).Value = dr["vencimento"];
+                        worksheet.Cell("E" + linha).Value = dr["repete"];
+                        worksheet.Cell("F" + linha).Value = dr["faturapaga"];
+                        worksheet.Cell("G" + linha).Value = dr["nome"];
+                    }
+
+                    conexao.Close();
+                };
+
+                workbook.SaveAs(@"C:\Users\kaina\Downloads\Relatorio_Fatura.xlsx");
+            }
+            Process.Start(new ProcessStartInfo(@"C:\Users\kaina\Downloads\Relatorio_Fatura.xlsx") { UseShellExecute = true });
         }
     }
 

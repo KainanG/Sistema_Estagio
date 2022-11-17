@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmClientes));
             this.dgvClientes = new System.Windows.Forms.DataGridView();
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
@@ -36,6 +37,7 @@
             this.btnBloquear = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnDesbloquear = new System.Windows.Forms.Button();
+            this.btnRelatorio = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,6 +75,7 @@
             // txtBuscar
             // 
             this.txtBuscar.Location = new System.Drawing.Point(326, 58);
+            this.txtBuscar.MaxLength = 500;
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(223, 23);
             this.txtBuscar.TabIndex = 4;
@@ -120,11 +123,23 @@
             this.btnDesbloquear.UseVisualStyleBackColor = true;
             this.btnDesbloquear.Click += new System.EventHandler(this.btnDesbloquear_Click);
             // 
+            // btnRelatorio
+            // 
+            this.btnRelatorio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRelatorio.Location = new System.Drawing.Point(344, 12);
+            this.btnRelatorio.Name = "btnRelatorio";
+            this.btnRelatorio.Size = new System.Drawing.Size(75, 23);
+            this.btnRelatorio.TabIndex = 14;
+            this.btnRelatorio.Text = "Relatório";
+            this.btnRelatorio.UseVisualStyleBackColor = true;
+            this.btnRelatorio.Click += new System.EventHandler(this.btnRelatorio_Click);
+            // 
             // FrmClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(643, 633);
+            this.Controls.Add(this.btnRelatorio);
             this.Controls.Add(this.btnDesbloquear);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnBloquear);
@@ -133,8 +148,10 @@
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.btnCadastrar);
             this.Controls.Add(this.dgvClientes);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmClientes";
-            this.Text = "FrmClientes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Clientes";
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -151,5 +168,6 @@
         private Button btnBloquear;
         private Button btnExcluir;
         private Button btnDesbloquear;
+        private Button btnRelatorio;
     }
 }

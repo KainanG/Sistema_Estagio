@@ -65,6 +65,7 @@
             // 
             this.txtUsuario.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.txtUsuario.Location = new System.Drawing.Point(32, 50);
+            this.txtUsuario.MaxLength = 10;
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(254, 23);
             this.txtUsuario.TabIndex = 2;
@@ -73,6 +74,7 @@
             // 
             this.txtSenha.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.txtSenha.Location = new System.Drawing.Point(32, 132);
+            this.txtSenha.MaxLength = 100;
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.PasswordChar = '*';
             this.txtSenha.Size = new System.Drawing.Size(254, 23);

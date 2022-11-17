@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmFaturas));
             this.dgv_faturas = new System.Windows.Forms.DataGridView();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -43,6 +44,7 @@
             this.lbl2 = new System.Windows.Forms.Label();
             this.lblPago = new System.Windows.Forms.Label();
             this.lblPendente = new System.Windows.Forms.Label();
+            this.btnRelatorio = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_faturas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,6 +80,7 @@
             // txtBuscar
             // 
             this.txtBuscar.Location = new System.Drawing.Point(250, 86);
+            this.txtBuscar.MaxLength = 500;
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(270, 23);
             this.txtBuscar.TabIndex = 1;
@@ -104,6 +107,7 @@
             // 
             // button2
             // 
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Location = new System.Drawing.Point(12, 12);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
@@ -114,6 +118,7 @@
             // 
             // btnExcluir
             // 
+            this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExcluir.Location = new System.Drawing.Point(93, 12);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(75, 23);
@@ -124,6 +129,7 @@
             // 
             // btnPago
             // 
+            this.btnPago.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPago.Location = new System.Drawing.Point(174, 12);
             this.btnPago.Name = "btnPago";
             this.btnPago.Size = new System.Drawing.Size(75, 23);
@@ -134,6 +140,7 @@
             // 
             // btnDestacar
             // 
+            this.btnDestacar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDestacar.Location = new System.Drawing.Point(336, 12);
             this.btnDestacar.Name = "btnDestacar";
             this.btnDestacar.Size = new System.Drawing.Size(75, 23);
@@ -144,6 +151,7 @@
             // 
             // btnPendente
             // 
+            this.btnPendente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPendente.Location = new System.Drawing.Point(255, 12);
             this.btnPendente.Name = "btnPendente";
             this.btnPendente.Size = new System.Drawing.Size(75, 23);
@@ -188,11 +196,23 @@
             this.lblPendente.Size = new System.Drawing.Size(0, 15);
             this.lblPendente.TabIndex = 12;
             // 
+            // btnRelatorio
+            // 
+            this.btnRelatorio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRelatorio.Location = new System.Drawing.Point(417, 12);
+            this.btnRelatorio.Name = "btnRelatorio";
+            this.btnRelatorio.Size = new System.Drawing.Size(75, 23);
+            this.btnRelatorio.TabIndex = 13;
+            this.btnRelatorio.Text = "Relatório";
+            this.btnRelatorio.UseVisualStyleBackColor = true;
+            this.btnRelatorio.Click += new System.EventHandler(this.btnRelatorio_Click);
+            // 
             // FrmFaturas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(694, 570);
+            this.Controls.Add(this.btnRelatorio);
             this.Controls.Add(this.lblPendente);
             this.Controls.Add(this.lblPago);
             this.Controls.Add(this.lbl2);
@@ -206,8 +226,10 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.dgv_faturas);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmFaturas";
-            this.Text = "FrmFaturas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Faturas";
             ((System.ComponentModel.ISupportInitialize)(this.dgv_faturas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -229,5 +251,6 @@
         private Label lbl2;
         private Label lblPago;
         private Label lblPendente;
+        private Button btnRelatorio;
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmResponsavelCadastro));
             this.txtComplemResp = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -61,7 +62,9 @@
             // 
             // txtComplemResp
             // 
+            this.txtComplemResp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtComplemResp.Location = new System.Drawing.Point(584, 294);
+            this.txtComplemResp.MaxLength = 200;
             this.txtComplemResp.Name = "txtComplemResp";
             this.txtComplemResp.Size = new System.Drawing.Size(248, 23);
             this.txtComplemResp.TabIndex = 63;
@@ -100,14 +103,18 @@
             // 
             // txtNumResp
             // 
+            this.txtNumResp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNumResp.Location = new System.Drawing.Point(429, 294);
+            this.txtNumResp.MaxLength = 5;
             this.txtNumResp.Name = "txtNumResp";
             this.txtNumResp.Size = new System.Drawing.Size(100, 23);
             this.txtNumResp.TabIndex = 59;
             // 
             // txtRuaResp
             // 
+            this.txtRuaResp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtRuaResp.Location = new System.Drawing.Point(12, 294);
+            this.txtRuaResp.MaxLength = 300;
             this.txtRuaResp.Name = "txtRuaResp";
             this.txtRuaResp.Size = new System.Drawing.Size(369, 23);
             this.txtRuaResp.TabIndex = 58;
@@ -134,7 +141,9 @@
             // 
             // txtBairroResp
             // 
+            this.txtBairroResp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBairroResp.Location = new System.Drawing.Point(650, 218);
+            this.txtBairroResp.MaxLength = 250;
             this.txtBairroResp.Name = "txtBairroResp";
             this.txtBairroResp.Size = new System.Drawing.Size(182, 23);
             this.txtBairroResp.TabIndex = 55;
@@ -151,7 +160,9 @@
             // 
             // txtCidadeResp
             // 
+            this.txtCidadeResp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCidadeResp.Location = new System.Drawing.Point(429, 218);
+            this.txtCidadeResp.MaxLength = 250;
             this.txtCidadeResp.Name = "txtCidadeResp";
             this.txtCidadeResp.Size = new System.Drawing.Size(175, 23);
             this.txtCidadeResp.TabIndex = 53;
@@ -168,14 +179,18 @@
             // 
             // txtEstadoResp
             // 
+            this.txtEstadoResp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEstadoResp.Location = new System.Drawing.Point(226, 218);
+            this.txtEstadoResp.MaxLength = 100;
             this.txtEstadoResp.Name = "txtEstadoResp";
             this.txtEstadoResp.Size = new System.Drawing.Size(155, 23);
             this.txtEstadoResp.TabIndex = 51;
             // 
             // txtCepResp
             // 
+            this.txtCepResp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCepResp.Location = new System.Drawing.Point(12, 218);
+            this.txtCepResp.MaxLength = 8;
             this.txtCepResp.Name = "txtCepResp";
             this.txtCepResp.Size = new System.Drawing.Size(173, 23);
             this.txtCepResp.TabIndex = 50;
@@ -283,35 +298,45 @@
             // 
             // txtNomeResp
             // 
+            this.txtNomeResp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNomeResp.Location = new System.Drawing.Point(12, 84);
+            this.txtNomeResp.MaxLength = 300;
             this.txtNomeResp.Name = "txtNomeResp";
             this.txtNomeResp.Size = new System.Drawing.Size(311, 23);
             this.txtNomeResp.TabIndex = 72;
             // 
             // txtCelResp
             // 
+            this.txtCelResp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCelResp.Location = new System.Drawing.Point(352, 84);
+            this.txtCelResp.MaxLength = 11;
             this.txtCelResp.Name = "txtCelResp";
             this.txtCelResp.Size = new System.Drawing.Size(130, 23);
             this.txtCelResp.TabIndex = 73;
             // 
             // txtTelefResp
             // 
+            this.txtTelefResp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTelefResp.Location = new System.Drawing.Point(508, 84);
+            this.txtTelefResp.MaxLength = 10;
             this.txtTelefResp.Name = "txtTelefResp";
             this.txtTelefResp.Size = new System.Drawing.Size(135, 23);
             this.txtTelefResp.TabIndex = 75;
             // 
             // txtCpfResp
             // 
+            this.txtCpfResp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCpfResp.Location = new System.Drawing.Point(12, 154);
+            this.txtCpfResp.MaxLength = 11;
             this.txtCpfResp.Name = "txtCpfResp";
             this.txtCpfResp.Size = new System.Drawing.Size(173, 23);
             this.txtCpfResp.TabIndex = 76;
             // 
             // txtRgResp
             // 
+            this.txtRgResp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtRgResp.Location = new System.Drawing.Point(671, 84);
+            this.txtRgResp.MaxLength = 9;
             this.txtRgResp.Name = "txtRgResp";
             this.txtRgResp.Size = new System.Drawing.Size(161, 23);
             this.txtRgResp.TabIndex = 77;
@@ -350,8 +375,9 @@
             this.Controls.Add(this.txtCepResp);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmResponsavelCadastro";
-            this.Text = "FrmResponsavel";
+            this.Text = "Cadastro de Responsável";
             this.ResumeLayout(false);
             this.PerformLayout();
 
